@@ -1,1 +1,56 @@
-<h1>Home</h1>
+<section class="hero" #hero>
+  <div class="hero__background" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__glow hero__glow--primary"></div>
+    <div class="hero__glow hero__glow--secondary"></div>
+  </div>
+
+  <div class="hero__content">
+    <p class="hero__badge" data-animate>
+      <span class="hero__badge-dot" aria-hidden="true"></span>
+      Senior Angular Developer &middot; Frontend Engineer
+    </p>
+
+    <h1 class="hero__name" data-animate>Bhagya Sankar Maddela</h1>
+
+    <p class="hero__tagline" data-animate>
+      Building high-performance enterprise web applications with Angular, TypeScript, and modern
+      frontend architecture.
+    </p>
+
+    <p class="hero__description" data-animate>
+      5+ years engineering Angular applications for enterprise healthcare systems — electronic
+      medical records, workers' compensation workflows, and operational reporting — with deep
+      expertise in Angular 20, Signals, and standalone component architecture.
+    </p>
+
+    <ul class="hero__stats" role="list" data-animate>
+      <li class="hero__stat">5+ Years Experience</li>
+      <li class="hero__stat">Healthcare Enterprise Systems</li>
+      <li class="hero__stat">Angular 20 &middot; Signals &middot; Standalone</li>
+    </ul>
+
+    <div class="hero__actions" data-animate>
+      <a routerLink="/projects" class="hero__button hero__button--primary">
+        View Projects
+        <svg lucideArrowRight [size]="18" aria-hidden="true"></svg>
+      </a>
+      <a routerLink="/resume" class="hero__button hero__button--secondary">
+        Download Résumé
+        <svg lucideDownload [size]="18" aria-hidden="true"></svg>
+      </a>
+    </div>
+
+    <nav class="hero__links" data-animate aria-label="More about Bhagya">
+      <a routerLink="/insights" class="hero__link">
+        Angular Insights
+        <svg lucideArrowUpRight [size]="14" aria-hidden="true"></svg>
+      </a>
+      <span class="hero__links-divider" aria-hidden="true"></span>
+      <a routerLink="/contact" class="hero__link">
+        Let's Connect
+        <svg lucideArrowUpRight [size]="14" aria-hidden="true"></svg>
+      </a>
+    </nav>
+  </div>
+</section>
