@@ -2,6 +2,9 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { registerGsapPlugins } from './core/animation/gsap.config';
+
+registerGsapPlugins();
 
 export const appConfig: ApplicationConfig = {
   providers: [

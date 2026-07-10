@@ -1,0 +1,105 @@
+@use 'tokens/breakpoints' as bp;
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: rgba(10, 10, 11, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding: var(--space-4) var(--container-padding-inline);
+}
+
+.navbar__brand {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+}
+
+.navbar__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+
+  @include bp.respond-to(md) {
+    display: none;
+  }
+}
+
+.navbar__nav {
+  position: fixed;
+  inset: 4.5rem var(--space-4) auto;
+  display: none;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-2);
+
+  &--open {
+    display: flex;
+  }
+
+  @include bp.respond-to(md) {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+.navbar__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+
+  @include bp.respond-to(md) {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-6);
+  }
+}
+
+.navbar__link {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+
+  &:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface-hover);
+  }
+
+  &--active {
+    color: var(--color-text-primary);
+  }
+
+  @include bp.respond-to(md) {
+    padding: var(--space-2) 0;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
