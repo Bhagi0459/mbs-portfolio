@@ -18,7 +18,7 @@ export class Home {
     this.seo.updateMetadata({
       title: 'Bhagya Sankar Maddela — Senior Angular Developer',
       description:
-        "5+ years engineering enterprise Angular applications for healthcare platforms — EMR systems, workers' compensation workflows, and operational reporting.",
+        '5+ years building enterprise Angular applications across financial services, business administration, and healthcare — including a stock portfolio management platform for Raymond James and current EMR and workers\' compensation systems.',
     });
 
     afterNextRender(() => this.playEntrance());

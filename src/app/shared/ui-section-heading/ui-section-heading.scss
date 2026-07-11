@@ -1,0 +1,23 @@
+.section-heading__eyebrow {
+  color: var(--color-accent-hover);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.section-heading__title {
+  font-size: clamp(1.75rem, 1.4vw + 1.4rem, 2.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+.section-heading__description {
+  margin-top: var(--space-3);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  max-width: 60ch;
+  line-height: var(--line-height-normal);
+}
