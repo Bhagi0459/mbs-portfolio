@@ -1,1 +1,68 @@
-<h1>About</h1>
+<article class="about" #aboutRoot>
+  <header class="about__intro" data-reveal>
+    <h1 class="about__title">About Me</h1>
+    <p class="about__lede">
+      I'm Bhagya Sankar Maddela, a Senior Angular Developer and Frontend Engineer with 5+ years
+      of experience building enterprise web applications. My work spans financial services,
+      business administration, and healthcare — engineering interfaces that hold up under the
+      complexity, compliance, and scale enterprise systems demand.
+    </p>
+    <p class="about__paragraph">
+      I care about applications that are as maintainable as they are performant: dynamic,
+      reusable component architecture, predictable typed state, and interfaces that stay usable
+      as systems grow. Whether I'm the sole Angular developer on a healthcare module or
+      integrating REST APIs into a financial platform, I bring the same attention to detail and
+      architectural discipline.
+    </p>
+  </header>
+
+  <section class="about__section" data-reveal>
+    <app-ui-section-heading eyebrow="Where I've Worked" title="Professional Journey" />
+    <ol class="journey" role="list">
+      @for (milestone of journey; track milestone.id) {
+        <li class="journey__item">
+          <div class="journey__meta">
+            <span class="journey__period">{{ milestone.period }}</span>
+            <span class="journey__domain">{{ milestone.domain }}</span>
+          </div>
+          <h3 class="journey__role">{{ milestone.role }}</h3>
+          <p class="journey__company">{{ milestone.company }}</p>
+          <p class="journey__description">{{ milestone.description }}</p>
+        </li>
+      }
+    </ol>
+  </section>
+
+  <section class="about__section" data-reveal>
+    <app-ui-section-heading eyebrow="Focus Areas" title="What I Specialize In" />
+    <div class="specializations">
+      @for (item of specializations; track item.title) {
+        <article class="specialization-card">
+          <h3 class="specialization-card__title">{{ item.title }}</h3>
+          <p class="specialization-card__description">{{ item.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="about__section" data-reveal>
+    <app-ui-section-heading eyebrow="Toolkit" title="Core Technologies" />
+    <ul class="tech-tags" role="list">
+      @for (tech of coreTechnologies; track tech) {
+        <li class="tech-tag">{{ tech }}</li>
+      }
+    </ul>
+  </section>
+
+  <section class="about__section" data-reveal>
+    <app-ui-section-heading eyebrow="Domains" title="Industries I've Worked In" />
+    <div class="industries">
+      @for (industry of industries; track industry.name) {
+        <article class="industry-card">
+          <h3 class="industry-card__name">{{ industry.name }}</h3>
+          <p class="industry-card__description">{{ industry.description }}</p>
+        </article>
+      }
+    </div>
+  </section>
+</article>
