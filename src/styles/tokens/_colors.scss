@@ -5,17 +5,19 @@
   --color-surface-hover: #1e1e22;
   --color-border: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.16);
+  --color-border-interactive: rgba(255, 255, 255, 0.4);
 
   --color-text-primary: #f5f5f7;
   --color-text-secondary: #a1a1aa;
-  --color-text-tertiary: #71717a;
+  --color-text-tertiary: #86868f;
 
-  --color-accent: #6366f1;
+  --color-accent: #5457e8;
   --color-accent-hover: #818cf8;
-  --color-accent-muted: rgba(99, 102, 241, 0.16);
-  --color-on-accent: #f5f5f7;
+  --color-accent-active: #4245c9;
+  --color-accent-muted: rgba(84, 87, 232, 0.16);
+  --color-on-accent: #ffffff;
 
-  --color-glow-primary: rgba(99, 102, 241, 0.35);
+  --color-glow-primary: rgba(84, 87, 232, 0.35);
   --color-glow-secondary: rgba(34, 211, 238, 0.22);
 
   --color-focus-ring: #818cf8;

@@ -1,0 +1,91 @@
+<article class="project-card">
+  <div class="project-card__visual" aria-hidden="true">
+    @if (project().thumbnailUrl; as thumbnailUrl) {
+      <img
+        [ngSrc]="thumbnailUrl"
+        [alt]="project().thumbnailAlt ?? ''"
+        fill
+        loading="lazy"
+      />
+    } @else {
+      <span class="project-card__glyph">{{ initials() }}</span>
+    }
+  </div>
+
+  <div class="project-card__body">
+    <div class="project-card__meta">
+      <span class="project-card__category">{{ project().category }}</span>
+      @if (project().domain) {
+        <span class="project-card__domain">{{ project().domain }}</span>
+      }
+    </div>
+
+    <h3 class="project-card__title">{{ project().title }}</h3>
+    @if (project().client) {
+      <p class="project-card__client">Client: {{ project().client }}</p>
+    }
+
+    <p class="project-card__description">{{ project().description }}</p>
+
+    <dl class="project-card__details">
+      <div class="project-card__row">
+        <dt>Problem Solved</dt>
+        <dd>{{ project().problemSolved }}</dd>
+      </div>
+
+      <div class="project-card__row">
+        <dt>My Role</dt>
+        <dd>{{ project().role }}</dd>
+      </div>
+
+      <div class="project-card__row">
+        <dt>Technologies Used</dt>
+        <dd>
+          <ul class="project-card__tags" role="list">
+            @for (tech of project().technologies; track tech) {
+              <li class="project-card__tag">{{ tech }}</li>
+            }
+          </ul>
+        </dd>
+      </div>
+
+      <div class="project-card__row">
+        <dt>Key Learnings</dt>
+        <dd>
+          <ul class="project-card__list" role="list">
+            @for (item of project().keyLearnings; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </dd>
+      </div>
+    </dl>
+
+    @if (project().repoUrl || project().liveUrl) {
+      <div class="project-card__actions">
+        @if (project().repoUrl; as repoUrl) {
+          <a
+            [href]="repoUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-card__button project-card__button--primary"
+          >
+            View on GitHub
+            <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+          </a>
+        }
+        @if (project().liveUrl; as liveUrl) {
+          <a
+            [href]="liveUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="project-card__button project-card__button--secondary"
+          >
+            Live Demo
+            <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+          </a>
+        }
+      </div>
+    }
+  </div>
+</article>

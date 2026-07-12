@@ -180,13 +180,13 @@
   box-shadow: var(--shadow-md);
 
   &:hover {
-    background-color: var(--color-accent-hover);
+    background-color: var(--color-accent-active);
   }
 }
 
 .hero__button--secondary {
   background-color: transparent;
-  border: 1px solid var(--color-border-strong);
+  border: 1px solid var(--color-border-interactive);
   color: var(--color-text-primary);
 
   &:hover {

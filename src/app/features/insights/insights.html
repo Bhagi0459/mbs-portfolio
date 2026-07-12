@@ -1,1 +1,50 @@
-<h1>Angular Insights</h1>
+<article class="insights" #insightsRoot>
+  <header class="insights__intro" data-reveal>
+    <h1 class="insights__title">Insights</h1>
+    <p class="insights__lede">
+      Notes on Angular and frontend engineering — curated from what I write and share.
+    </p>
+  </header>
+
+  <ul class="insights__feed" role="list">
+    @for (post of posts; track post.id) {
+      <li>
+        <article class="insight-card" data-reveal>
+          @if (post.date || post.series) {
+            <div class="insight-card__meta">
+              @if (post.date) {
+                <span class="insight-card__date">{{ post.date }}</span>
+              }
+              @if (post.series) {
+                <span class="insight-card__series">{{ post.series }}</span>
+              }
+            </div>
+          }
+
+          <h2 class="insight-card__title">{{ post.title }}</h2>
+          <p class="insight-card__excerpt">{{ post.excerpt }}</p>
+
+          <ul class="insight-card__tags" role="list">
+            @for (tag of post.tags; track tag) {
+              <li class="insight-card__tag">{{ tag }}</li>
+            }
+          </ul>
+
+          @if (post.sourceUrl; as url) {
+            <a [href]="url" target="_blank" rel="noopener noreferrer" class="insight-card__link">
+              Read on LinkedIn
+              <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+            </a>
+          }
+        </article>
+      </li>
+    }
+  </ul>
+
+  <aside class="insights__note" data-reveal>
+    <p>
+      <strong>Angular Performance Series</strong> — an ongoing series I'm actively publishing.
+      More posts will appear here as they go live.
+    </p>
+  </aside>
+</article>

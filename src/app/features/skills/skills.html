@@ -1,1 +1,51 @@
-<h1>Skills</h1>
+<article class="skills" #skillsRoot>
+  <header class="skills__intro" data-reveal>
+    <h1 class="skills__title">Skills</h1>
+    <p class="skills__lede">
+      Technical capabilities grouped by how I actually use them — not a scoreboard of
+      percentages, but the areas of engineering I work in daily.
+    </p>
+  </header>
+
+  @for (group of groups; track group.id) {
+    <section class="skills__section" data-reveal>
+      <app-ui-section-heading
+        [eyebrow]="group.eyebrow"
+        [title]="group.title"
+        [description]="group.description"
+      >
+        @switch (group.id) {
+          @case ('frontend-engineering') {
+            <svg sectionIcon lucideCode [size]="20" aria-hidden="true"></svg>
+          }
+          @case ('angular-architecture') {
+            <svg sectionIcon lucideLayers [size]="20" aria-hidden="true"></svg>
+          }
+          @case ('ui-component-ecosystem') {
+            <svg sectionIcon lucideLayoutGrid [size]="20" aria-hidden="true"></svg>
+          }
+          @case ('backend-data-integration') {
+            <svg sectionIcon lucideDatabase [size]="20" aria-hidden="true"></svg>
+          }
+          @case ('analytics-reporting') {
+            <svg sectionIcon lucideBarChart [size]="20" aria-hidden="true"></svg>
+          }
+          @case ('engineering-tools') {
+            <svg sectionIcon lucideWrench [size]="20" aria-hidden="true"></svg>
+          }
+        }
+      </app-ui-section-heading>
+
+      <ul class="skill-chips" role="list">
+        @for (skill of group.skills; track skill.name) {
+          <li class="skill-chip">
+            {{ skill.name }}
+            @if (skill.note) {
+              <span class="skill-chip__note">— {{ skill.note }}</span>
+            }
+          </li>
+        }
+      </ul>
+    </section>
+  }
+</article>

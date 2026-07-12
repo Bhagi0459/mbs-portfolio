@@ -54,7 +54,10 @@ export class About {
       { threshold: 0.15 },
     );
 
-    targets.forEach((target) => observer.observe(target));
+    targets.forEach((target) => {
+      target.classList.add('reveal-pending');
+      observer.observe(target);
+    });
     this.destroyRef.onDestroy(() => observer.disconnect());
   }
 }

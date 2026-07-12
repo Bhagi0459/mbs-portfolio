@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LucideExternalLink, LucideMail } from '@lucide/angular';
+import { CONTACT_INFO } from '../../core/contact/contact-info.data';
 
 @Component({
   selector: 'app-footer',
@@ -9,7 +10,5 @@ import { LucideExternalLink, LucideMail } from '@lucide/angular';
 })
 export class Footer {
   protected readonly currentYear = new Date().getFullYear();
-  protected readonly email = 'm.bhagyasankar@gmail.com';
-  protected readonly githubUrl = 'https://github.com/bhagyasankarm';
-  protected readonly linkedinUrl = 'https://linkedin.com/in/bhagyasankarm';
+  protected readonly contact = CONTACT_INFO;
 }

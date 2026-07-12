@@ -1,1 +1,71 @@
-<h1>Contact</h1>
+<article class="contact" #contactRoot>
+  <header class="contact__intro" data-reveal>
+    <h1 class="contact__title">Contact</h1>
+    <p class="contact__lede">The best ways to reach me.</p>
+  </header>
+
+  <section class="contact__panel" data-reveal>
+    <ul class="contact-list" role="list">
+      <li class="contact-row">
+        <svg lucideMail [size]="20" aria-hidden="true" class="contact-row__icon"></svg>
+        <div class="contact-row__body">
+          <p class="contact-row__label">Email</p>
+          <a
+            class="contact-row__value"
+            [href]="'mailto:' + contact.email"
+            [attr.aria-label]="'Email: ' + contact.email"
+          >
+            {{ contact.email }}
+          </a>
+        </div>
+      </li>
+
+      @if (contact.githubUrl; as githubUrl) {
+        <li class="contact-row">
+          <svg lucideExternalLink [size]="20" aria-hidden="true" class="contact-row__icon"></svg>
+          <div class="contact-row__body">
+            <p class="contact-row__label">GitHub</p>
+            <a
+              class="contact-row__value"
+              [href]="githubUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="'GitHub: ' + githubUrl"
+            >
+              {{ githubUrl }}
+            </a>
+          </div>
+        </li>
+      }
+
+      @if (contact.linkedinUrl; as linkedinUrl) {
+        <li class="contact-row">
+          <svg lucideExternalLink [size]="20" aria-hidden="true" class="contact-row__icon"></svg>
+          <div class="contact-row__body">
+            <p class="contact-row__label">LinkedIn</p>
+            <a
+              class="contact-row__value"
+              [href]="linkedinUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="'LinkedIn: ' + linkedinUrl"
+            >
+              {{ linkedinUrl }}
+            </a>
+          </div>
+        </li>
+      }
+
+      <li class="contact-row">
+        <svg lucideMapPin [size]="20" aria-hidden="true" class="contact-row__icon"></svg>
+        <div class="contact-row__body">
+          <p class="contact-row__label">Location</p>
+          <p class="contact-row__value">{{ contact.location }}</p>
+          @if (contact.locationNote) {
+            <p class="contact-row__note">{{ contact.locationNote }}</p>
+          }
+        </div>
+      </li>
+    </ul>
+  </section>
+</article>

@@ -1,9 +1,14 @@
+export type CredentialCategory = 'Certification' | 'Continuous Learning';
+
 export interface Certification {
   id: string;
-  name: string;
+  title: string;
   issuer: string;
-  issueDate: string;
+  category: CredentialCategory;
+  issueDate?: string;
+  credentialId?: string;
   credentialUrl?: string;
-  badgeImageUrl: string;
-  badgeImageAlt: string;
+  badgeImageUrl?: string;
+  badgeImageAlt?: string;
+  topics?: string[];
 }

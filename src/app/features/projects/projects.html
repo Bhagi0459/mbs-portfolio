@@ -1,1 +1,35 @@
-<h1>Projects</h1>
+<article class="projects" #projectsRoot>
+  <header class="projects__intro" data-reveal>
+    <h1 class="projects__title">Projects</h1>
+    <p class="projects__lede">
+      A showcase of real engineering work — enterprise applications built for clients and
+      employers, alongside personal projects exploring modern Angular.
+    </p>
+  </header>
+
+  <section class="projects__section" data-reveal>
+    <app-ui-section-heading
+      eyebrow="Client &amp; Enterprise Work"
+      title="Professional Projects"
+      description="Enterprise applications delivered for clients and employers. Details that would expose confidential implementation or client information are intentionally omitted."
+    />
+    <div class="project-grid">
+      @for (project of professionalProjects; track project.id) {
+        <app-project-card [project]="project" />
+      }
+    </div>
+  </section>
+
+  <section class="projects__section" data-reveal>
+    <app-ui-section-heading
+      eyebrow="Independent Work"
+      title="Personal Projects"
+      description="Projects built on my own time to explore modern Angular patterns and ship real, working software."
+    />
+    <div class="project-grid">
+      @for (project of personalProjects; track project.id) {
+        <app-project-card [project]="project" />
+      }
+    </div>
+  </section>
+</article>

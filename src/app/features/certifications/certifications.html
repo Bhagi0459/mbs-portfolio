@@ -1,1 +1,101 @@
-<h1>Certifications</h1>
+<article class="certifications" #certificationsRoot>
+  <header class="certifications__intro" data-reveal>
+    <h1 class="certifications__title">Certifications &amp; Continuous Learning</h1>
+    <p class="certifications__lede">
+      Verified credentials and continuous learning — only what's real, nothing invented.
+    </p>
+  </header>
+
+  <section class="certifications__section" data-reveal>
+    <app-ui-section-heading
+      eyebrow="Verified Credentials"
+      title="Certifications"
+      description="Formal, issuer-verified certifications."
+    >
+      <svg sectionIcon lucideAward [size]="20" aria-hidden="true"></svg>
+    </app-ui-section-heading>
+
+    @if (certifications.length) {
+      <ul class="credential-list" role="list">
+        @for (cert of certifications; track cert.id) {
+          <li class="credential-item">
+            <div class="credential-item__header">
+              <h3 class="credential-item__title">{{ cert.title }}</h3>
+              @if (cert.issueDate) {
+                <span class="credential-item__date">{{ cert.issueDate }}</span>
+              }
+            </div>
+            <p class="credential-item__issuer">{{ cert.issuer }}</p>
+            @if (cert.credentialId) {
+              <p class="credential-item__id">Credential ID: {{ cert.credentialId }}</p>
+            }
+
+            @if (cert.topics && cert.topics.length) {
+              <ul class="credential-item__topics" role="list">
+                @for (topic of cert.topics; track topic) {
+                  <li class="credential-item__topic">{{ topic }}</li>
+                }
+              </ul>
+            }
+
+            @if (cert.credentialUrl; as url) {
+              <a
+                [href]="url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="credential-item__link"
+              >
+                View credential
+                <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+              </a>
+            }
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="credential-empty">Formal certifications will be added here as they're completed.</p>
+    }
+  </section>
+
+  <section class="certifications__section" data-reveal>
+    <app-ui-section-heading
+      eyebrow="Always Learning"
+      title="Continuous Learning"
+      description="Courses and self-directed learning completed to stay current."
+    >
+      <svg sectionIcon lucideGraduationCap [size]="20" aria-hidden="true"></svg>
+    </app-ui-section-heading>
+
+    <ul class="credential-list" role="list">
+      @for (cert of continuousLearning; track cert.id) {
+        <li class="credential-item">
+          <div class="credential-item__header">
+            <h3 class="credential-item__title">{{ cert.title }}</h3>
+            @if (cert.issueDate) {
+              <span class="credential-item__date">{{ cert.issueDate }}</span>
+            }
+          </div>
+          <p class="credential-item__issuer">{{ cert.issuer }}</p>
+          @if (cert.credentialId) {
+            <p class="credential-item__id">Credential ID: {{ cert.credentialId }}</p>
+          }
+
+          @if (cert.topics && cert.topics.length) {
+            <ul class="credential-item__topics" role="list">
+              @for (topic of cert.topics; track topic) {
+                <li class="credential-item__topic">{{ topic }}</li>
+              }
+            </ul>
+          }
+
+          @if (cert.credentialUrl; as url) {
+            <a [href]="url" target="_blank" rel="noopener noreferrer" class="credential-item__link">
+              View credential
+              <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+            </a>
+          }
+        </li>
+      }
+    </ul>
+  </section>
+</article>
