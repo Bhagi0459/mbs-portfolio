@@ -1,4 +1,4 @@
-import { Component, ElementRef, afterNextRender, inject, viewChild } from '@angular/core';
+import { Component, DestroyRef, ElementRef, afterNextRender, inject, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideArrowRight, LucideArrowUpRight, LucideDownload } from '@lucide/angular';
 import gsap from 'gsap';
@@ -12,6 +12,7 @@ import { SeoService } from '../../core/seo/seo';
 })
 export class Home {
   private readonly seo = inject(SeoService);
+  private readonly destroyRef = inject(DestroyRef);
   private readonly hero = viewChild.required<ElementRef<HTMLElement>>('hero');
 
   constructor() {
@@ -21,7 +22,10 @@ export class Home {
         '5+ years building enterprise Angular applications across financial services, business administration, and healthcare — including a stock portfolio management platform for Raymond James and current EMR and workers\' compensation systems.',
     });
 
-    afterNextRender(() => this.playEntrance());
+    afterNextRender(() => {
+      this.playEntrance();
+      this.setupParallax();
+    });
   }
 
   private playEntrance(): void {
@@ -44,5 +48,40 @@ export class Home {
       stagger: 0.12,
       delay: 0.2,
     });
+  }
+
+  /** Subtle pointer-parallax on the decorative glow blobs — fine-pointer desktops only. */
+  private setupParallax(): void {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const hasFinePointer = window.matchMedia('(pointer: fine)').matches;
+    if (prefersReducedMotion || !hasFinePointer) {
+      return;
+    }
+
+    const hero = this.hero().nativeElement;
+    const primary = hero.querySelector<HTMLElement>('.hero__glow--primary');
+    const secondary = hero.querySelector<HTMLElement>('.hero__glow--secondary');
+    if (!primary || !secondary) {
+      return;
+    }
+
+    const movePrimaryX = gsap.quickTo(primary, 'x', { duration: 0.6, ease: 'power3.out' });
+    const movePrimaryY = gsap.quickTo(primary, 'y', { duration: 0.6, ease: 'power3.out' });
+    const moveSecondaryX = gsap.quickTo(secondary, 'x', { duration: 0.6, ease: 'power3.out' });
+    const moveSecondaryY = gsap.quickTo(secondary, 'y', { duration: 0.6, ease: 'power3.out' });
+
+    const handlePointerMove = (event: PointerEvent): void => {
+      const rect = hero.getBoundingClientRect();
+      const offsetX = (event.clientX - rect.left) / rect.width - 0.5;
+      const offsetY = (event.clientY - rect.top) / rect.height - 0.5;
+
+      movePrimaryX(offsetX * 24);
+      movePrimaryY(offsetY * 24);
+      moveSecondaryX(offsetX * -16);
+      moveSecondaryY(offsetY * -16);
+    };
+
+    hero.addEventListener('pointermove', handlePointerMove);
+    this.destroyRef.onDestroy(() => hero.removeEventListener('pointermove', handlePointerMove));
   }
 }

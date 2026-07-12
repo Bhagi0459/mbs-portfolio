@@ -14,6 +14,15 @@
     border-color: var(--color-border-strong);
     transform: translateY(-2px);
   }
+
+  // On fine-pointer, motion-enabled devices, JS drives `transform` directly (pointer-tilt);
+  // CSS steps back on hover so the two don't fight. :focus-within is untouched, so keyboard
+  // users still get the lift regardless of pointer capability.
+  @media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    &:hover {
+      transform: none;
+    }
+  }
 }
 
 .project-card__visual {
@@ -163,7 +172,26 @@
   border-radius: var(--radius-md);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+
+  svg {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+
+    svg {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
 }
 
 .project-card__button--primary {

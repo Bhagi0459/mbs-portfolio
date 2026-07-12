@@ -74,6 +74,10 @@
   &:hover {
     transform: translateY(-1px);
   }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
 }
 
 .resume__button--primary {
