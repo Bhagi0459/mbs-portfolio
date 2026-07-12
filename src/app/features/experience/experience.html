@@ -7,49 +7,52 @@
     </p>
   </header>
 
-  <ol class="career" role="list">
-    @for (job of experience; track job.id) {
-      <li class="career__item" data-reveal>
-        <span class="career__marker" aria-hidden="true"></span>
+  <div class="career-rail">
+    <div class="career-rail__fill" aria-hidden="true" #railFill></div>
+    <ol class="career" role="list">
+      @for (job of experience; track job.id) {
+        <li class="career__item" data-reveal>
+          <span class="career__marker" aria-hidden="true"></span>
 
-        <div class="career__meta">
-          <span class="career__period">{{ job.period }}</span>
-          <span class="career__domain">{{ job.domain }}</span>
-          @if (job.project) {
-            <span class="career__project">{{ job.project }}</span>
-          }
-        </div>
-
-        <h2 class="career__role">{{ job.role }}</h2>
-        <p class="career__company">{{ job.company }}</p>
-
-        <div class="career__group">
-          <h3 class="career__group-title">Key Responsibilities</h3>
-          <ul class="career__list" role="list">
-            @for (item of job.responsibilities; track item) {
-              <li>{{ item }}</li>
+          <div class="career__meta">
+            <span class="career__period">{{ job.period }}</span>
+            <span class="career__domain">{{ job.domain }}</span>
+            @if (job.project) {
+              <span class="career__project">{{ job.project }}</span>
             }
-          </ul>
-        </div>
+          </div>
 
-        <div class="career__group">
-          <h3 class="career__group-title">Technologies Used</h3>
-          <ul class="career__tags" role="list">
-            @for (tech of job.technologies; track tech) {
-              <li class="career__tag">{{ tech }}</li>
-            }
-          </ul>
-        </div>
+          <h2 class="career__role">{{ job.role }}</h2>
+          <p class="career__company">{{ job.company }}</p>
 
-        <div class="career__group">
-          <h3 class="career__group-title">Key Contributions</h3>
-          <ul class="career__list" role="list">
-            @for (item of job.contributions; track item) {
-              <li>{{ item }}</li>
-            }
-          </ul>
-        </div>
-      </li>
-    }
-  </ol>
+          <div class="career__group">
+            <h3 class="career__group-title">Key Responsibilities</h3>
+            <ul class="career__list" role="list">
+              @for (item of job.responsibilities; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+
+          <div class="career__group">
+            <h3 class="career__group-title">Technologies Used</h3>
+            <ul class="career__tags" role="list">
+              @for (tech of job.technologies; track tech) {
+                <li class="career__tag">{{ tech }}</li>
+              }
+            </ul>
+          </div>
+
+          <div class="career__group">
+            <h3 class="career__group-title">Key Contributions</h3>
+            <ul class="career__list" role="list">
+              @for (item of job.contributions; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ol>
+  </div>
 </article>

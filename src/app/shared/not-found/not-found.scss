@@ -34,9 +34,15 @@
   background-color: var(--color-accent);
   color: var(--color-on-accent);
   font-weight: var(--font-weight-medium);
-  transition: background-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
 
   &:hover {
     background-color: var(--color-accent-active);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }

@@ -21,6 +21,7 @@ export class Experience {
   private readonly seo = inject(SeoService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly root = viewChild.required<ElementRef<HTMLElement>>('experienceRoot');
+  private readonly railFill = viewChild.required<ElementRef<HTMLElement>>('railFill');
 
   protected readonly experience = EXPERIENCE;
 
@@ -31,7 +32,10 @@ export class Experience {
         'Professional experience spanning healthcare, financial services, and business administration — Angular development at CommerzTech India and Sorano Technologies.',
     });
 
-    afterNextRender(() => this.playReveal());
+    afterNextRender(() => {
+      this.playReveal();
+      this.playRailFill();
+    });
   }
 
   private playReveal(): void {
@@ -67,5 +71,37 @@ export class Experience {
     this.destroyRef.onDestroy(() => {
       tweens.forEach((tween) => tween.scrollTrigger?.kill());
     });
+  }
+
+  /** Accent fill line that tracks scroll progress through the career rail — purely decorative. */
+  private playRailFill(): void {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      return;
+    }
+
+    registerGsapPlugins();
+
+    const rail = this.root().nativeElement.querySelector<HTMLElement>('.career-rail');
+    if (!rail) {
+      return;
+    }
+
+    const tween = gsap.fromTo(
+      this.railFill().nativeElement,
+      { scaleY: 0 },
+      {
+        scaleY: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: rail,
+          start: 'top 70%',
+          end: 'bottom 70%',
+          scrub: true,
+        },
+      },
+    );
+
+    this.destroyRef.onDestroy(() => tween.scrollTrigger?.kill());
   }
 }
