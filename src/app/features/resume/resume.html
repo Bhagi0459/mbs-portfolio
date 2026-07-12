@@ -1,1 +1,33 @@
-<h1>Resume</h1>
+<article class="resume" #resumeRoot>
+  <header class="resume__intro" data-reveal>
+    <h1 class="resume__title">Resume</h1>
+    <p class="resume__lede">
+      5+ years of enterprise application experience in Angular and frontend engineering — across
+      financial services, business administration, and healthcare.
+    </p>
+  </header>
+
+  <section class="resume__panel" data-reveal>
+    <div class="resume__actions">
+      <a
+        [href]="resumeUrl"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="resume__button resume__button--primary"
+        aria-label="View résumé (opens PDF in a new tab)"
+      >
+        <svg lucideFileText [size]="18" aria-hidden="true"></svg>
+        View résumé
+      </a>
+      <a
+        [href]="resumeUrl"
+        download="Bhagya_Sankar_Maddela.pdf"
+        class="resume__button resume__button--secondary"
+        aria-label="Download résumé (PDF)"
+      >
+        <svg lucideDownload [size]="18" aria-hidden="true"></svg>
+        Download résumé (PDF)
+      </a>
+    </div>
+  </section>
+</article>

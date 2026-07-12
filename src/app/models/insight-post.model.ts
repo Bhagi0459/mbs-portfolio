@@ -1,9 +1,9 @@
 export interface InsightPost {
   id: string;
   title: string;
-  date: string;
   excerpt: string;
-  body: string;
+  date?: string;
   tags: string[];
   sourceUrl?: string;
+  series?: string;
 }

@@ -1,6 +1,7 @@
 export interface ContactInfo {
   email: string;
-  linkedinUrl: string;
-  githubUrl: string;
+  githubUrl?: string;
+  linkedinUrl?: string;
   location: string;
+  locationNote?: string;
 }

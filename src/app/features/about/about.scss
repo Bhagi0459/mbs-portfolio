@@ -5,16 +5,19 @@
 }
 
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(24px);
   transition:
     opacity 0.6s ease,
     transform 0.6s ease;
+}
 
-  &.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+[data-reveal].reveal-pending {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-reveal].reveal-pending.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about__intro,
@@ -125,7 +128,7 @@
 // What I Specialize In
 .specializations {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
   gap: var(--space-6);
   margin-top: var(--space-10);
 }
@@ -178,7 +181,7 @@
 // Industries I've Worked In
 .industries {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(16rem, 100%), 1fr));
   gap: var(--space-6);
   margin-top: var(--space-10);
 }

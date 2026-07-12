@@ -4,23 +4,27 @@
 
     <ul class="footer__links" role="list">
       <li>
-        <a class="footer__link" [href]="'mailto:' + email">
+        <a class="footer__link" [href]="'mailto:' + contact.email">
           <svg lucideMail [size]="16" aria-hidden="true"></svg>
           Email
         </a>
       </li>
-      <li>
-        <a class="footer__link" [href]="githubUrl" target="_blank" rel="noopener noreferrer">
-          GitHub
-          <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
-        </a>
-      </li>
-      <li>
-        <a class="footer__link" [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">
-          LinkedIn
-          <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
-        </a>
-      </li>
+      @if (contact.githubUrl; as githubUrl) {
+        <li>
+          <a class="footer__link" [href]="githubUrl" target="_blank" rel="noopener noreferrer">
+            GitHub
+            <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+          </a>
+        </li>
+      }
+      @if (contact.linkedinUrl; as linkedinUrl) {
+        <li>
+          <a class="footer__link" [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">
+            LinkedIn
+            <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+          </a>
+        </li>
+      }
     </ul>
   </div>
 </footer>

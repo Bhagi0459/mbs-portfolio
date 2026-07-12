@@ -1,0 +1,86 @@
+import { SkillGroup } from '../../models/skill.model';
+
+export const SKILL_GROUPS: SkillGroup[] = [
+  {
+    id: 'frontend-engineering',
+    eyebrow: 'Core Craft',
+    title: 'Frontend Engineering',
+    description: 'The core languages and frameworks I build enterprise interfaces with daily.',
+    skills: [
+      { name: 'Angular' },
+      { name: 'TypeScript' },
+      { name: 'JavaScript' },
+      { name: 'HTML' },
+      { name: 'CSS' },
+      { name: 'SCSS' },
+      { name: 'Responsive Web Design' },
+    ],
+  },
+  {
+    id: 'angular-architecture',
+    eyebrow: 'How I Build',
+    title: 'Angular Architecture & Patterns',
+    description: 'Patterns and Angular primitives I rely on for structuring enterprise applications.',
+    skills: [
+      { name: 'Standalone Components' },
+      { name: 'Signals' },
+      { name: 'RxJS' },
+      { name: 'Reactive Forms' },
+      { name: 'Dynamic Forms' },
+      { name: 'Lazy Loading' },
+      { name: 'Route Guards' },
+      { name: 'Reusable Component Architecture' },
+      { name: 'State Management Patterns' },
+    ],
+  },
+  {
+    id: 'ui-component-ecosystem',
+    eyebrow: 'Interface Layer',
+    title: 'UI & Component Ecosystem',
+    description: 'Component libraries and interaction tooling for production interfaces.',
+    skills: [
+      { name: 'Angular Material' },
+      { name: 'PrimeNG' },
+      { name: 'Responsive UI' },
+      { name: 'Accessibility' },
+      { name: 'GSAP' },
+    ],
+  },
+  {
+    id: 'backend-data-integration',
+    eyebrow: 'Beyond the Frontend',
+    title: 'Backend & Data Integration',
+    description: 'Connecting Angular applications to backend services and data.',
+    skills: [
+      { name: 'REST API Integration' },
+      { name: '.NET API Integration' },
+      { name: 'SQL Server' },
+      { name: 'Stored Procedures' },
+    ],
+  },
+  {
+    id: 'analytics-reporting',
+    eyebrow: 'Making Data Useful',
+    title: 'Analytics & Reporting',
+    description: 'Turning operational data into dashboards stakeholders actually use.',
+    skills: [
+      { name: 'Power BI' },
+      { name: 'DAX' },
+      { name: 'Data Visualization' },
+      { name: 'Operational Dashboards' },
+    ],
+  },
+  {
+    id: 'engineering-tools',
+    eyebrow: 'Day to Day',
+    title: 'Engineering Tools & Practices',
+    description: 'Day-to-day tooling, plus concepts I am actively building on.',
+    skills: [
+      { name: 'Git' },
+      { name: 'GitHub' },
+      { name: 'ESLint' },
+      { name: 'CI/CD concepts' },
+      { name: 'GitHub Actions knowledge', note: 'exploring, not yet used professionally' },
+    ],
+  },
+];

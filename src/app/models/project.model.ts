@@ -1,11 +1,18 @@
+export type ProjectCategory = 'Professional' | 'Personal';
+
 export interface Project {
   id: string;
   title: string;
+  category: ProjectCategory;
   description: string;
-  imageUrl: string;
-  imageAlt: string;
+  problemSolved: string;
+  role: string;
   technologies: string[];
+  keyLearnings: string[];
+  client?: string;
+  domain?: string;
   repoUrl?: string;
   liveUrl?: string;
-  featured?: boolean;
+  thumbnailUrl?: string;
+  thumbnailAlt?: string;
 }

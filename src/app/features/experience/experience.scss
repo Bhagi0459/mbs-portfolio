@@ -1,0 +1,199 @@
+@use 'tokens/breakpoints' as bp;
+
+.experience {
+  padding-block: var(--space-24) var(--space-32);
+}
+
+[data-reveal] {
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+[data-reveal].reveal-pending {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-reveal].reveal-pending.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience__intro,
+.career {
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-inline);
+}
+
+.experience__intro {
+  margin-bottom: var(--space-8);
+}
+
+.experience__title {
+  font-size: clamp(2.25rem, 3vw + 1.5rem, 3.5rem);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+}
+
+.experience__lede {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  max-width: 62ch;
+  line-height: var(--line-height-snug);
+}
+
+.career {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  margin-top: var(--space-16);
+}
+
+.career::before {
+  content: '';
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: 0.375rem;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-border-strong) 0%,
+    var(--color-border) 85%,
+    transparent 100%
+  );
+}
+
+.career__item {
+  position: relative;
+  padding-left: var(--space-10);
+
+  @include bp.respond-to(md) {
+    padding-left: var(--space-12);
+  }
+}
+
+.career__marker {
+  position: absolute;
+  top: 0.4rem;
+  left: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-muted);
+}
+
+.career__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.career__period {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+}
+
+.career__domain,
+.career__project {
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.career__domain {
+  background-color: var(--color-accent-muted);
+  color: var(--color-accent-hover);
+}
+
+.career__project {
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+}
+
+.career__role {
+  font-size: clamp(1.375rem, 1vw + 1.15rem, 1.75rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-1);
+}
+
+.career__company {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-8);
+}
+
+.career__group {
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+
+  &:first-of-type {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  & + & {
+    margin-top: var(--space-6);
+  }
+}
+
+.career__group-title {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-3);
+}
+
+.career__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.career__list li {
+  position: relative;
+  padding-left: var(--space-4);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  max-width: 68ch;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0.6em;
+    left: 0;
+    width: 0.3rem;
+    height: 0.3rem;
+    border-radius: var(--radius-full);
+    background-color: var(--color-border-strong);
+  }
+}
+
+.career__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.career__tag {
+  padding: var(--space-1) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}

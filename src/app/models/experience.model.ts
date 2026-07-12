@@ -1,11 +1,11 @@
 export interface Experience {
   id: string;
-  role: string;
   company: string;
-  companyUrl?: string;
-  startDate: string;
-  endDate?: string;
-  summary: string;
-  highlights: string[];
+  role: string;
+  period: string;
+  domain: string;
+  project?: string;
+  responsibilities: string[];
   technologies: string[];
+  contributions: string[];
 }

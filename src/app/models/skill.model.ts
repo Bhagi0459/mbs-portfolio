@@ -1,8 +1,12 @@
-export type SkillCategory = 'frontend' | 'backend' | 'tooling' | 'cloud' | 'other';
-
 export interface Skill {
-  id: string;
   name: string;
-  category: SkillCategory;
-  level: number;
+  note?: string;
+}
+
+export interface SkillGroup {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  skills: Skill[];
 }

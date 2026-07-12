@@ -1,4 +1,7 @@
 <div class="section-heading">
+  <div class="section-heading__icon">
+    <ng-content select="[sectionIcon]"></ng-content>
+  </div>
   @if (eyebrow()) {
     <p class="section-heading__eyebrow">{{ eyebrow() }}</p>
   }
