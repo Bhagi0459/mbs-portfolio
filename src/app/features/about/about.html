@@ -49,7 +49,7 @@
     <app-ui-section-heading eyebrow="Toolkit" title="Core Technologies" />
     <ul class="tech-tags" role="list">
       @for (tech of coreTechnologies; track tech) {
-        <li class="tech-tag">{{ tech }}</li>
+        <li class="tech-tag"><app-tech-chip [name]="tech" /></li>
       }
     </ul>
   </section>

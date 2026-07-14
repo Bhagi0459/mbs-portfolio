@@ -7,12 +7,13 @@ import {
   viewChild,
 } from '@angular/core';
 import { SeoService } from '../../core/seo/seo';
+import { TechChip } from '../../shared/tech-chip/tech-chip';
 import { UiSectionHeading } from '../../shared/ui-section-heading/ui-section-heading';
 import { CORE_TECHNOLOGIES, INDUSTRIES, JOURNEY, SPECIALIZATIONS } from './about.data';
 
 @Component({
   selector: 'app-about',
-  imports: [UiSectionHeading],
+  imports: [UiSectionHeading, TechChip],
   templateUrl: './about.html',
   styleUrl: './about.scss',
 })

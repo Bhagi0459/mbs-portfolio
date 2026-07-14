@@ -1,0 +1,6 @@
+@if (iconPath(); as d) {
+  <svg class="tech-chip__icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+    <path [attr.d]="d" fill="currentColor" />
+  </svg>
+}
+<span class="tech-chip__label">{{ name() }}</span>

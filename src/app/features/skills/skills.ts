@@ -15,6 +15,7 @@ import {
   LucideWrench,
 } from '@lucide/angular';
 import { SeoService } from '../../core/seo/seo';
+import { TechChip } from '../../shared/tech-chip/tech-chip';
 import { UiSectionHeading } from '../../shared/ui-section-heading/ui-section-heading';
 import { SKILL_GROUPS } from './skills.data';
 
@@ -22,6 +23,7 @@ import { SKILL_GROUPS } from './skills.data';
   selector: 'app-skills',
   imports: [
     UiSectionHeading,
+    TechChip,
     LucideCode,
     LucideLayers,
     LucideLayoutGrid,
