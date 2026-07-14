@@ -5,6 +5,16 @@ html {
   // Reserve the scrollbar's width on every route so a page without overflow doesn't
   // shift width relative to one that scrolls (e.g. navigating to/from the boot intro).
   scrollbar-gutter: stable;
+
+  // Home is deliberately sized to never need a vertical scrollbar (see home.scss), so the
+  // reserved gutter there is permanently empty — 15-17px of unpaintable native browser space
+  // past the hero's own right edge, visible as a flat seam against its background. Dropping the
+  // reservation only on Home (via the same `.shell--single-viewport` class app.html already
+  // drives off `isHome()`) removes that dead strip without reintroducing width-shift on routes
+  // that actually scroll.
+  &:has(.shell--single-viewport) {
+    scrollbar-gutter: auto;
+  }
 }
 
 body {

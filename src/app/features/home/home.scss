@@ -1,22 +1,54 @@
 @use 'tokens/breakpoints' as bp;
 
 // Home is always hosted inside app.html's `.shell--single-viewport` grid (Navbar / 1fr / Footer),
-// so filling 100% here means "whatever's left of the viewport" — not a hardcoded viewport calc.
-// If the hero's own content ever needs more room than that, the grid row grows to fit it and the
-// page scrolls normally; height:100% never clips content, it just tracks the row's resolved size.
+// so filling the leftover space here means "whatever's left of the viewport" — not a hardcoded
+// viewport calc. min-height (not height) is deliberate: it fills the row when content is short,
+// but can never clip content, because a minimum can always be exceeded if the content needs more.
 :host {
   display: block;
-  height: 100%;
+  min-height: 100%;
 }
 
 .hero {
   position: relative;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: var(--space-16) var(--container-padding-inline);
+  // Reserved vertical rhythm shrinks in two steps on shorter viewports (1366x768, 1440x900) so
+  // the hero has a real chance of fitting alongside the navbar/footer, and relaxes back to the
+  // original spacious spacing (incl. the extra breathing room on the stats/actions/links rows)
+  // once there's headroom to spare (1920x1080 and taller).
+  --hero-pad-block: var(--space-4);
+  --hero-content-gap: var(--space-2);
+  --hero-layout-gap: var(--space-3);
+  --hero-portrait-max: 12rem;
+  // Deliberately smaller than the hero's original size — a requested visual design choice,
+  // not a viewport-fitting compromise. Kept regardless of measured overflow.
+  --hero-name-size: clamp(2rem, 2.5vw + 0.9rem, 3rem);
+  --hero-stats-margin: 0px;
+  --hero-actions-margin: var(--space-2);
+  --hero-links-margin: 0px;
+  padding: var(--hero-pad-block) var(--container-padding-inline);
+
+  @media (min-height: 769px) {
+    --hero-pad-block: var(--space-6);
+    --hero-content-gap: var(--space-2);
+    --hero-layout-gap: var(--space-5);
+    --hero-portrait-max: 14rem;
+    --hero-name-size: clamp(2.15rem, 3.1vw + 1.35rem, 4.25rem);
+  }
+
+  @media (min-height: 901px) {
+    --hero-pad-block: var(--space-16);
+    --hero-content-gap: var(--space-5);
+    --hero-layout-gap: var(--space-8);
+    --hero-portrait-max: 20rem;
+    --hero-stats-margin: var(--space-2);
+    --hero-actions-margin: var(--space-3);
+    --hero-links-margin: var(--space-2);
+  }
 }
 
 .hero__background,
@@ -30,6 +62,13 @@
 .hero__background {
   z-index: 0;
   pointer-events: none;
+  // Decorative glows/sweep are deliberately oversized and positioned partly off-canvas so their
+  // blur bleeds past the hero's edge — contain that locally on this layer rather than leaning
+  // solely on `.hero`'s own overflow:hidden above. `clip` is preferred (no scroll-container side
+  // effects); browsers without it simply keep the `hidden` declaration since an unsupported value
+  // is ignored, not applied as a fallback-to-initial.
+  overflow: hidden;
+  overflow: clip;
 }
 
 .hero__grid {
@@ -163,7 +202,7 @@
     display: grid;
     grid-template-columns: 3fr 2fr;
     align-items: center;
-    gap: var(--space-8);
+    gap: var(--hero-layout-gap);
   }
 }
 
@@ -171,7 +210,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--hero-content-gap);
   max-width: 56rem;
   margin-inline: auto;
   text-align: center;
@@ -206,10 +245,13 @@
 }
 
 .hero__name {
-  font-size: clamp(2.75rem, 4vw + 1.75rem, 5.5rem);
+  font-size: var(--hero-name-size);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-tight);
+  line-height: 1.08;
   letter-spacing: -0.02em;
+  // Pulls the badge→name and name→tagline gaps in slightly beyond the shared content gap —
+  // scoped to just these two neighbors so the rest of the hero's rhythm is untouched.
+  margin-block: -0.25rem;
   background: linear-gradient(
     180deg,
     var(--color-text-primary) 0%,
@@ -242,7 +284,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-3);
-  margin-top: var(--space-2);
+  margin-top: var(--hero-stats-margin);
 }
 
 .hero__stat {
@@ -264,7 +306,7 @@
   gap: var(--space-3);
   width: 100%;
   max-width: 24rem;
-  margin-top: var(--space-4);
+  margin-top: var(--hero-actions-margin);
 
   @include bp.respond-to(sm) {
     flex-direction: row;
@@ -337,7 +379,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  margin-top: var(--space-2);
+  margin-top: var(--hero-links-margin);
 }
 
 .hero__link {
@@ -376,7 +418,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: clamp(11rem, 30vw, 20rem);
+  width: clamp(10rem, 26vw, var(--hero-portrait-max));
   flex-shrink: 0;
 
   @include bp.respond-to(md) {

@@ -2,27 +2,30 @@
   <div class="footer__inner">
     <p class="footer__copyright">&copy; {{ currentYear }} Bhagya Sankar Maddela. All rights reserved.</p>
 
-    <ul class="footer__links" role="list">
-      <li>
-        <a class="footer__link" [href]="'mailto:' + contact.email">
-          <svg lucideMail [size]="16" aria-hidden="true"></svg>
-          Email
-        </a>
-      </li>
-      @if (contact.githubUrl; as githubUrl) {
+    <ul class="footer__social" role="list">
+      @for (link of socialLinks; track link.icon) {
         <li>
-          <a class="footer__link" [href]="githubUrl" target="_blank" rel="noopener noreferrer">
-            GitHub
-            <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
-          </a>
-        </li>
-      }
-      @if (contact.linkedinUrl; as linkedinUrl) {
-        <li>
-          <a class="footer__link" [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">
-            LinkedIn
-            <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
-          </a>
+          @if (link.external) {
+            <a
+              class="footer__social-link"
+              [href]="link.href"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="link.ariaLabel"
+              [attr.title]="link.label"
+            >
+              <app-social-icon [name]="link.icon" />
+            </a>
+          } @else {
+            <a
+              class="footer__social-link"
+              [href]="link.href"
+              [attr.aria-label]="link.ariaLabel"
+              [attr.title]="link.label"
+            >
+              <app-social-icon [name]="link.icon" />
+            </a>
+          }
         </li>
       }
     </ul>

@@ -15,5 +15,7 @@
     <router-outlet />
   </main>
 
-  <app-footer />
+  @if (!isHome()) {
+    <app-footer />
+  }
 </div>

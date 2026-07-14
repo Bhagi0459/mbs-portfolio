@@ -39,7 +39,7 @@
       <ul class="skill-chips" role="list">
         @for (skill of group.skills; track skill.name) {
           <li class="skill-chip">
-            {{ skill.name }}
+            <app-tech-chip [name]="skill.name" />
             @if (skill.note) {
               <span class="skill-chip__note">— {{ skill.note }}</span>
             }
