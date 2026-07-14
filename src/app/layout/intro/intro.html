@@ -1,0 +1,48 @@
+<div
+  class="intro"
+  [class.intro--exit]="exiting()"
+  aria-hidden="true"
+  (transitionend)="onExitTransitionEnd($event)"
+>
+  <div class="intro__grid"></div>
+  <div class="intro__glow intro__glow--blue"></div>
+  <div class="intro__glow intro__glow--violet"></div>
+
+  <p class="intro__status">
+    <span class="intro__status-line" style="--i: 0">SYSTEM / MBS</span>
+    <span class="intro__status-line" style="--i: 1">&gt; FRONTEND ENGINEERING</span>
+    <span class="intro__status-line" style="--i: 2">&gt; ANGULAR</span>
+    <span class="intro__status-line" style="--i: 3">&gt; PERFORMANCE</span>
+    <span class="intro__status-line" style="--i: 4">STATUS: READY</span>
+  </p>
+
+  <div class="intro__content">
+    <div class="intro__mark-group">
+      <div class="intro__system">
+        <span class="intro__halo"></span>
+        <span class="intro__ring"></span>
+        <span class="intro__tick intro__tick--tl"></span>
+        <span class="intro__tick intro__tick--br"></span>
+        <span class="intro__node intro__node--1"></span>
+        <span class="intro__node intro__node--2"></span>
+        <span class="intro__node intro__node--3"></span>
+
+        <div class="intro__mark-wrap">
+          <p class="intro__mark">
+            <span class="intro__bracket intro__bracket--open">&lt;</span
+            ><span class="intro__letters">MBS</span
+            ><span class="intro__bracket intro__bracket--slash">/</span
+            ><span class="intro__bracket intro__bracket--close">&gt;</span>
+          </p>
+          <span class="intro__scanline"></span>
+        </div>
+      </div>
+      <p class="intro__tag">CODE &middot; BUILD &middot; SOLVE</p>
+    </div>
+
+    <div class="intro__identity">
+      <span class="intro__name">Bhagya Sankar Maddela</span>
+      <span class="intro__role">Frontend Engineer</span>
+    </div>
+  </div>
+</div>

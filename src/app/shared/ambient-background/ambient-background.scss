@@ -1,0 +1,62 @@
+// Shared, extremely subtle inner-page atmosphere — one instance mounted at the shell level
+// (see app.html) rather than duplicated per feature page. Substantially quieter than the
+// Home hero background so Home remains the visually "special" route.
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ambient__glow {
+  position: absolute;
+  width: 30rem;
+  height: 30rem;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.05;
+  animation: ambient-drift 46s ease-in-out infinite;
+}
+
+.ambient__glow--blue {
+  top: -10rem;
+  right: -8rem;
+  background: var(--color-glow-electric);
+}
+
+.ambient__glow--violet {
+  bottom: -12rem;
+  left: -10rem;
+  background: var(--color-glow-violet);
+  animation-delay: -20s;
+}
+
+.ambient__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--color-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, black 0%, transparent 70%);
+  opacity: 0.03;
+}
+
+@keyframes ambient-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-2%, 2%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ambient__glow {
+    animation: none;
+  }
+}

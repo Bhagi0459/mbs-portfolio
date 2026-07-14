@@ -47,7 +47,7 @@
 
 .navbar__nav {
   position: fixed;
-  inset: 4.5rem var(--space-4) auto;
+  inset: var(--navbar-height) var(--space-4) auto;
   display: flex;
   flex-direction: column;
   background-color: var(--color-surface);

@@ -1,0 +1,400 @@
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(rgba(37, 52, 110, 0.35), transparent 60%),
+    var(--color-bg);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.55s ease;
+
+  &--exit {
+    opacity: 0;
+  }
+}
+
+// Shared fade-in for every background/geometry layer — each sets --eo (target opacity)
+// and --d (delay) rather than repeating a full animation declaration per element.
+.intro__grid,
+.intro__glow,
+.intro__halo,
+.intro__ring,
+.intro__tick,
+.intro__node {
+  position: absolute;
+  opacity: 0;
+  animation: intro-fade-to 0.6s ease forwards;
+  animation-delay: var(--d, 0s);
+}
+
+.intro__glow,
+.intro__halo,
+.intro__ring,
+.intro__node {
+  border-radius: 9999px;
+}
+
+// Layer 2 — perspective technical grid, anchored low for a cinematic "floor" feel.
+.intro__grid {
+  left: 50%;
+  bottom: -10%;
+  width: 140%;
+  height: 70%;
+  transform: translateX(-50%) perspective(500px) rotateX(58deg);
+  transform-origin: bottom center;
+  background-image:
+    linear-gradient(to right, var(--color-border-interactive) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-border-interactive) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to top, black 0%, transparent 85%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 85%);
+  --eo: 0.6;
+}
+
+// Layer 3 — ambient blue/violet glow.
+.intro__glow {
+  width: clamp(17rem, 33vw, 32rem);
+  height: clamp(17rem, 33vw, 32rem);
+  filter: blur(90px);
+}
+
+.intro__glow--blue {
+  top: -8rem;
+  left: -6rem;
+  background: var(--color-glow-electric);
+}
+
+.intro__glow--violet {
+  bottom: -10rem;
+  right: -6rem;
+  background: var(--color-glow-violet);
+  --d: 0.1s;
+}
+
+// Decorative terminal status readout — compact panel, subtle and secondary.
+.intro__status {
+  position: absolute;
+  top: var(--space-8);
+  left: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-border-strong);
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  animation: intro-status-recede 0.4s ease 1.3s forwards;
+}
+
+.intro__status-line {
+  opacity: 0;
+  transform: translateX(-6px);
+  animation: intro-status-in 0.35s ease forwards;
+  animation-delay: calc(0.25s + var(--i, 0) * 0.1s);
+
+  &:not(:first-child):not(:last-child) {
+    color: var(--color-electric-blue);
+  }
+
+  &:last-child {
+    color: var(--color-text-primary);
+  }
+}
+
+// Layer 5 — brand mark and typography.
+.intro__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  text-align: center;
+  padding-inline: var(--space-6);
+}
+
+.intro__mark-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  animation: intro-mark-out 0.4s ease 1.8s forwards;
+}
+
+// Bounded cluster housing the ring/ticks/nodes/halo/mark — keeps the technical geometry
+// tight around the mark instead of scattered across the viewport on wide screens.
+.intro__system {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(16rem, 60vw, 28rem);
+  height: clamp(11rem, 30vw, 18rem);
+}
+
+.intro__halo {
+  inset: 18% 24%;
+  background: radial-gradient(circle, var(--color-glow-electric) 0%, transparent 70%);
+  filter: blur(40px);
+  --eo: 0.65;
+  --d: 0.15s;
+}
+
+.intro__ring {
+  inset: 8%;
+  border: 1px solid var(--color-border-strong);
+  border-top-color: var(--color-electric-blue);
+  transform: scale(0.85) rotate(-35deg);
+  --eo: 0.5;
+  --d: 0.4s;
+}
+
+.intro__tick {
+  width: 1.75rem;
+  height: 1px;
+  transform: rotate(45deg);
+  background: linear-gradient(90deg, var(--g1, transparent), var(--g2, transparent));
+  --eo: 0.7;
+  --d: 0.45s;
+}
+
+.intro__tick--tl {
+  top: 8%;
+  left: -2%;
+  --g2: var(--color-border-interactive);
+}
+
+.intro__tick--br {
+  bottom: 8%;
+  right: -2%;
+  --g1: var(--color-border-interactive);
+}
+
+.intro__node {
+  width: 5px;
+  height: 5px;
+  background: var(--color-electric-blue);
+  box-shadow: 0 0 12px 2px var(--color-glow-electric);
+  --eo: 0.9;
+}
+
+.intro__node--1 {
+  top: 6%;
+  left: 12%;
+  --d: 0.35s;
+}
+
+.intro__node--2 {
+  bottom: 10%;
+  right: 8%;
+  background: var(--color-violet);
+  box-shadow: 0 0 12px 2px var(--color-glow-violet);
+  --d: 0.45s;
+}
+
+.intro__node--3 {
+  top: 14%;
+  right: 14%;
+  --d: 0.55s;
+}
+
+.intro__mark-wrap {
+  position: relative;
+  display: inline-flex;
+  padding: var(--space-4);
+}
+
+.intro__mark {
+  display: inline-flex;
+  align-items: baseline;
+  font-family: var(--font-family-mono);
+  font-size: clamp(3.5rem, 6vw, 6.5rem);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.01em;
+}
+
+.intro__bracket {
+  opacity: 0;
+  color: var(--color-electric-blue);
+  text-shadow: 0 0 22px var(--color-glow-electric);
+  animation: intro-bracket-in 0.4s ease 0.5s forwards;
+}
+
+.intro__bracket--open {
+  transform: translateX(-18px);
+}
+
+.intro__bracket--close {
+  transform: translateX(18px);
+}
+
+.intro__bracket--slash {
+  color: var(--color-violet);
+  text-shadow: 0 0 22px var(--color-glow-violet);
+  transform: scale(0.4);
+  animation: intro-slash-in 0.35s ease 0.85s forwards;
+}
+
+.intro__letters {
+  opacity: 0;
+  color: #ffffff;
+  text-shadow: 0 0 28px rgba(245, 245, 247, 0.4);
+  transform: scale(0.94);
+  animation: intro-letters-in 0.4s ease 0.7s forwards;
+}
+
+.intro__scanline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-hover), transparent);
+  opacity: 0;
+  animation: intro-scanline 0.6s ease 0.8s forwards;
+}
+
+.intro__tag {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  opacity: 0;
+  animation: intro-fade-up 0.4s ease 1s forwards;
+}
+
+.intro__identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.intro__name {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: intro-fade-up 0.45s ease 1.85s forwards;
+}
+
+.intro__role {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-electric-blue);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: intro-fade-up 0.45s ease 2s forwards;
+}
+
+.intro--exit .intro__status {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes intro-fade-to {
+  to {
+    opacity: var(--eo, 1);
+  }
+}
+
+@keyframes intro-status-in {
+  to {
+    opacity: 0.75;
+    transform: translateX(0);
+  }
+}
+
+@keyframes intro-status-recede {
+  to {
+    opacity: 0.55;
+  }
+}
+
+@keyframes intro-bracket-in {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes intro-slash-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-letters-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-scanline {
+  0% {
+    opacity: 0;
+    top: -10%;
+  }
+
+  40% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0;
+    top: 110%;
+  }
+}
+
+@keyframes intro-fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-mark-out {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 639px) {
+  .intro__status {
+    display: none;
+  }
+
+  .intro__node--3,
+  .intro__tick {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+}

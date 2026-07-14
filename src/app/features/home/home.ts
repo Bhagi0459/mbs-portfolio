@@ -1,7 +1,17 @@
-import { Component, DestroyRef, ElementRef, afterNextRender, inject, viewChild } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  afterNextRender,
+  effect,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LucideArrowRight, LucideArrowUpRight, LucideDownload } from '@lucide/angular';
 import gsap from 'gsap';
+import { IntroService } from '../../core/intro/intro';
 import { SeoService } from '../../core/seo/seo';
 
 @Component({
@@ -13,7 +23,18 @@ import { SeoService } from '../../core/seo/seo';
 export class Home {
   private readonly seo = inject(SeoService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly introService = inject(IntroService);
   private readonly hero = viewChild.required<ElementRef<HTMLElement>>('hero');
+
+  private readonly viewReady = signal(false);
+  private entrancePlayed = false;
+
+  /**
+   * True if the boot intro had already handed off before this Home instance even existed —
+   * i.e. this is a normal route navigation, not the initial coordinated bootstrap. Read once,
+   * synchronously, at construction time so the two cases can use different entrance timing.
+   */
+  private readonly isNormalNavigation = this.introService.handoff();
 
   constructor() {
     this.seo.updateMetadata({
@@ -23,12 +44,32 @@ export class Home {
     });
 
     afterNextRender(() => {
-      this.playEntrance();
+      this.viewReady.set(true);
       this.setupParallax();
+    });
+
+    effect(() => {
+      if (!this.viewReady() || this.entrancePlayed) {
+        return;
+      }
+
+      // Normal navigation: play the full entrance immediately, no intro to coordinate with.
+      if (this.isNormalNavigation) {
+        this.entrancePlayed = true;
+        this.playEntrance(false);
+        return;
+      }
+
+      // Initial bootstrap: wait for the intro's exit to *begin* (not end) so the hero
+      // entrance overlaps with the intro dissolving, instead of starting after a gap.
+      if (this.introService.handoff()) {
+        this.entrancePlayed = true;
+        this.playEntrance(true);
+      }
     });
   }
 
-  private playEntrance(): void {
+  private playEntrance(shortened: boolean): void {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       return;
@@ -40,14 +81,14 @@ export class Home {
     }
 
     gsap.set(targets, { opacity: 0, y: 28 });
-    gsap.to(targets, {
-      opacity: 1,
-      y: 0,
-      duration: 0.9,
-      ease: 'power3.out',
-      stagger: 0.12,
-      delay: 0.2,
-    });
+    gsap.to(
+      targets,
+      // Coordinated boot: settle within ~700ms of the intro beginning its exit, so the hero
+      // is already emerging while the intro dissolves rather than replaying a long entrance.
+      shortened
+        ? { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out', stagger: 0.04 }
+        : { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out', stagger: 0.12, delay: 0.2 },
+    );
   }
 
   /** Subtle pointer-parallax on the decorative glow blobs — fine-pointer desktops only. */
