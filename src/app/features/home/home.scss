@@ -1,12 +1,17 @@
 @use 'tokens/breakpoints' as bp;
 
+// Home is always hosted inside app.html's `.shell--single-viewport` grid (Navbar / 1fr / Footer),
+// so filling 100% here means "whatever's left of the viewport" — not a hardcoded viewport calc.
+// If the hero's own content ever needs more room than that, the grid row grows to fit it and the
+// page scrolls normally; height:100% never clips content, it just tracks the row's resolved size.
+:host {
+  display: block;
+  height: 100%;
+}
+
 .hero {
   position: relative;
-  // The navbar sits in normal flow above the hero, so min-height must subtract its height —
-  // otherwise navbar + 100vh hero + footer always exceeds the viewport and forces a scrollbar.
-  min-height: calc(100vh - var(--navbar-height));
-  min-height: calc(100svh - var(--navbar-height));
-  min-height: calc(100dvh - var(--navbar-height));
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,16 +19,20 @@
   padding: var(--space-16) var(--container-padding-inline);
 }
 
-.hero__background {
+.hero__background,
+.hero__grid,
+.hero__ambient,
+.hero__portrait-fade {
   position: absolute;
   inset: 0;
+}
+
+.hero__background {
   z-index: 0;
   pointer-events: none;
 }
 
 .hero__grid {
-  position: absolute;
-  inset: 0;
   background-image:
     linear-gradient(to right, var(--color-border) 1px, transparent 1px),
     linear-gradient(to bottom, var(--color-border) 1px, transparent 1px);
@@ -57,11 +66,6 @@
 
 // Always-alive ambient layer — continues drifting even without pointer movement, so the
 // pointer-parallax above is an enhancement rather than the only source of motion.
-.hero__ambient {
-  position: absolute;
-  inset: 0;
-}
-
 .hero__node {
   position: absolute;
   width: 4px;
@@ -140,9 +144,30 @@
   }
 }
 
-.hero__content {
+// Two-column composition (text + portrait) from md+; single stacked column below that, with
+// the professional introduction and CTA first so mobile prioritizes them over the portrait.
+.hero__layout {
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-10);
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+
+  // 3fr:2fr gives an honest ~60/40 column split; the portrait's own width is further
+  // clamped below so it reads as a complementary visual, not an equal-weight column.
+  @include bp.respond-to(md) {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+    gap: var(--space-8);
+  }
+}
+
+.hero__content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -150,6 +175,13 @@
   max-width: 56rem;
   margin-inline: auto;
   text-align: center;
+
+  @include bp.respond-to(md) {
+    align-items: flex-start;
+    max-width: none;
+    margin-inline: 0;
+    text-align: left;
+  }
 }
 
 .hero__badge {
@@ -243,6 +275,13 @@
   }
 }
 
+.hero__stats,
+.hero__actions {
+  @include bp.respond-to(md) {
+    justify-content: flex-start;
+  }
+}
+
 .hero__button {
   display: inline-flex;
   align-items: center;
@@ -328,4 +367,56 @@
   height: 3px;
   border-radius: 9999px;
   background-color: var(--color-border-strong);
+}
+
+// Portrait panel — capped size so it stays a complementary visual, never larger than the
+// professional content column. Kept centered within its grid column at md+, not stretched.
+.hero__portrait-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(11rem, 30vw, 20rem);
+  flex-shrink: 0;
+
+  @include bp.respond-to(md) {
+    justify-self: center;
+  }
+}
+
+.hero__portrait-glow {
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle,
+    var(--color-glow-electric) 0%,
+    var(--color-glow-violet) 55%,
+    transparent 75%
+  );
+  filter: blur(48px);
+  opacity: 0.6;
+}
+
+.hero__portrait-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid var(--color-border-strong);
+  border-radius: 2.5rem 2.5rem 2.5rem 0.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__portrait-fade {
+  background: linear-gradient(to top, rgba(10, 10, 11, 0.85) 0%, transparent 42%);
+  pointer-events: none;
 }
