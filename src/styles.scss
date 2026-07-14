@@ -1,6 +1,12 @@
 @use './styles/tokens';
 @use './styles/reset';
 
+html {
+  // Reserve the scrollbar's width on every route so a page without overflow doesn't
+  // shift width relative to one that scrolls (e.g. navigating to/from the boot intro).
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text-primary);

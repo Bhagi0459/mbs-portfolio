@@ -2,8 +2,11 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
+  // The navbar sits in normal flow above the hero, so min-height must subtract its height —
+  // otherwise navbar + 100vh hero + footer always exceeds the viewport and forces a scrollbar.
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
+  min-height: calc(100dvh - var(--navbar-height));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,6 +53,91 @@
   width: clamp(18rem, 32vw, 36rem);
   height: clamp(18rem, 32vw, 36rem);
   background: var(--color-glow-secondary);
+}
+
+// Always-alive ambient layer — continues drifting even without pointer movement, so the
+// pointer-parallax above is an enhancement rather than the only source of motion.
+.hero__ambient {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__node {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--color-electric-blue);
+  box-shadow: 0 0 14px 2px var(--color-glow-electric);
+  opacity: 0.5;
+  animation: hero-node-drift 16s ease-in-out infinite;
+}
+
+.hero__node--1 {
+  top: 18%;
+  left: 12%;
+  animation-duration: 18s;
+}
+
+.hero__node--2 {
+  top: 62%;
+  left: 88%;
+  background: var(--color-violet);
+  box-shadow: 0 0 14px 2px var(--color-glow-violet);
+  animation-duration: 22s;
+  animation-delay: -6s;
+}
+
+.hero__node--3 {
+  top: 78%;
+  left: 20%;
+  animation-duration: 20s;
+  animation-delay: -12s;
+}
+
+.hero__sweep {
+  position: absolute;
+  inset: -20% -10%;
+  background: linear-gradient(115deg, transparent 40%, var(--color-glow-electric) 50%, transparent 60%);
+  opacity: 0.06;
+  animation: hero-sweep-drift 26s linear infinite;
+}
+
+@keyframes hero-node-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translate(1.5%, -2.5%);
+    opacity: 0.75;
+  }
+}
+
+@keyframes hero-sweep-drift {
+  0% {
+    transform: translateX(-15%);
+  }
+
+  100% {
+    transform: translateX(15%);
+  }
+}
+
+@media (max-width: 639px) {
+  .hero__node--3,
+  .hero__sweep {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__node,
+  .hero__sweep {
+    animation: none;
+  }
 }
 
 .hero__content {

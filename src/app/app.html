@@ -1,3 +1,11 @@
+@if (introService.active()) {
+  <app-intro />
+}
+
+@if (!isHome()) {
+  <app-ambient-background />
+}
+
 <a class="skip-link" href="#main-content">Skip to content</a>
 
 <app-navbar />
