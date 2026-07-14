@@ -3,6 +3,12 @@
 .footer {
   border-top: 1px solid var(--color-border);
   margin-top: var(--space-24);
+
+  // On Home's single-viewport shell the footer already sits at the end of a grid row sized to
+  // the leftover viewport space — an extra top margin would push the page past 100dvh for no reason.
+  :host-context(.shell--single-viewport) & {
+    margin-top: 0;
+  }
 }
 
 .footer__inner {

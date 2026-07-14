@@ -8,6 +8,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
+import { NgOptimizedImage } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { LucideArrowRight, LucideArrowUpRight, LucideDownload } from '@lucide/angular';
 import gsap from 'gsap';
@@ -16,7 +17,7 @@ import { SeoService } from '../../core/seo/seo';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, LucideArrowRight, LucideArrowUpRight, LucideDownload],
+  imports: [RouterLink, LucideArrowRight, LucideArrowUpRight, LucideDownload, NgOptimizedImage],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -102,6 +103,7 @@ export class Home {
     const hero = this.hero().nativeElement;
     const primary = hero.querySelector<HTMLElement>('.hero__glow--primary');
     const secondary = hero.querySelector<HTMLElement>('.hero__glow--secondary');
+    const portrait = hero.querySelector<HTMLElement>('.hero__portrait-wrap');
     if (!primary || !secondary) {
       return;
     }
@@ -110,6 +112,13 @@ export class Home {
     const movePrimaryY = gsap.quickTo(primary, 'y', { duration: 0.6, ease: 'power3.out' });
     const moveSecondaryX = gsap.quickTo(secondary, 'x', { duration: 0.6, ease: 'power3.out' });
     const moveSecondaryY = gsap.quickTo(secondary, 'y', { duration: 0.6, ease: 'power3.out' });
+    // Tiny depth cue on the portrait — deliberately much smaller range than the glows.
+    const movePortraitX = portrait
+      ? gsap.quickTo(portrait, 'x', { duration: 0.6, ease: 'power3.out' })
+      : null;
+    const movePortraitY = portrait
+      ? gsap.quickTo(portrait, 'y', { duration: 0.6, ease: 'power3.out' })
+      : null;
 
     const handlePointerMove = (event: PointerEvent): void => {
       const rect = hero.getBoundingClientRect();
@@ -120,6 +129,8 @@ export class Home {
       movePrimaryY(offsetY * 24);
       moveSecondaryX(offsetX * -16);
       moveSecondaryY(offsetY * -16);
+      movePortraitX?.(offsetX * 8);
+      movePortraitY?.(offsetY * 8);
     };
 
     hero.addEventListener('pointermove', handlePointerMove);

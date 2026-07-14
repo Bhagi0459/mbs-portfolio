@@ -1,0 +1,11 @@
+// Home only: Navbar + Hero + Footer fill the viewport without a forced 100vh hero fighting
+// the navbar/footer for space. The grid's 1fr row absorbs whatever room is left; if the
+// content genuinely needs more than that, the row (and container) grow past 100dvh and the
+// page scrolls normally — nothing is clipped and no inner scroll container is introduced.
+.shell--single-viewport {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
+}

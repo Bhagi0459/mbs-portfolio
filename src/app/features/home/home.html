@@ -11,53 +11,70 @@
     </div>
   </div>
 
-  <div class="hero__content">
-    <p class="hero__badge" data-animate>
-      <span class="hero__badge-dot" aria-hidden="true"></span>
-      Senior Angular Developer &middot; Frontend Engineer
-    </p>
+  <div class="hero__layout">
+    <div class="hero__content">
+      <p class="hero__badge" data-animate>
+        <span class="hero__badge-dot" aria-hidden="true"></span>
+        Senior Angular Developer &middot; Frontend Engineer
+      </p>
 
-    <h1 class="hero__name" data-animate>Bhagya Sankar Maddela</h1>
+      <h1 class="hero__name" data-animate>Bhagya Sankar Maddela</h1>
 
-    <p class="hero__tagline" data-animate>
-      Building high-performance enterprise web applications with Angular, TypeScript, and modern
-      frontend architecture.
-    </p>
+      <p class="hero__tagline" data-animate>
+        Building high-performance enterprise web applications with Angular, TypeScript, and modern
+        frontend architecture.
+      </p>
 
-    <p class="hero__description" data-animate>
-      5+ years engineering Angular applications across financial services, business
-      administration, and healthcare — from a stock portfolio management platform built for
-      Raymond James to EMR and workers' compensation systems in my current role — with deep
-      expertise in modern Angular, Signals, and standalone component architecture.
-    </p>
+      <p class="hero__description" data-animate>
+        5+ years engineering Angular applications across financial services, business
+        administration, and healthcare — from a stock portfolio management platform built for
+        Raymond James to EMR and workers' compensation systems in my current role — with deep
+        expertise in modern Angular, Signals, and standalone component architecture.
+      </p>
 
-    <ul class="hero__stats" role="list" data-animate>
-      <li class="hero__stat">5+ Years Experience</li>
-      <li class="hero__stat">Financial Services &middot; Healthcare &middot; Enterprise</li>
-      <li class="hero__stat">Modern Angular &middot; Signals &middot; Standalone</li>
-    </ul>
+      <ul class="hero__stats" role="list" data-animate>
+        <li class="hero__stat">5+ Years Experience</li>
+        <li class="hero__stat">Financial Services &middot; Healthcare &middot; Enterprise</li>
+        <li class="hero__stat">Modern Angular &middot; Signals &middot; Standalone</li>
+      </ul>
 
-    <div class="hero__actions" data-animate>
-      <a routerLink="/projects" class="hero__button hero__button--primary">
-        View Projects
-        <svg lucideArrowRight [size]="18" aria-hidden="true"></svg>
-      </a>
-      <a routerLink="/resume" class="hero__button hero__button--secondary">
-        Download Résumé
-        <svg lucideDownload [size]="18" aria-hidden="true"></svg>
-      </a>
+      <div class="hero__actions" data-animate>
+        <a routerLink="/projects" class="hero__button hero__button--primary">
+          View Projects
+          <svg lucideArrowRight [size]="18" aria-hidden="true"></svg>
+        </a>
+        <a routerLink="/resume" class="hero__button hero__button--secondary">
+          Download Résumé
+          <svg lucideDownload [size]="18" aria-hidden="true"></svg>
+        </a>
+      </div>
+
+      <nav class="hero__links" data-animate aria-label="More about Bhagya">
+        <a routerLink="/insights" class="hero__link">
+          Angular Insights
+          <svg lucideArrowUpRight [size]="14" aria-hidden="true"></svg>
+        </a>
+        <span class="hero__links-divider" aria-hidden="true"></span>
+        <a routerLink="/contact" class="hero__link">
+          Let's Connect
+          <svg lucideArrowUpRight [size]="14" aria-hidden="true"></svg>
+        </a>
+      </nav>
     </div>
 
-    <nav class="hero__links" data-animate aria-label="More about Bhagya">
-      <a routerLink="/insights" class="hero__link">
-        Angular Insights
-        <svg lucideArrowUpRight [size]="14" aria-hidden="true"></svg>
-      </a>
-      <span class="hero__links-divider" aria-hidden="true"></span>
-      <a routerLink="/contact" class="hero__link">
-        Let's Connect
-        <svg lucideArrowUpRight [size]="14" aria-hidden="true"></svg>
-      </a>
-    </nav>
+    <div class="hero__portrait-wrap" data-animate>
+      <div class="hero__portrait-glow" aria-hidden="true"></div>
+      <div class="hero__portrait-frame">
+        <img
+          ngSrc="/images/bhagya-sankar-maddela.webp"
+          width="400"
+          height="400"
+          alt="Bhagya Sankar Maddela"
+          class="hero__portrait-image"
+          priority
+        />
+        <div class="hero__portrait-fade" aria-hidden="true"></div>
+      </div>
+    </div>
   </div>
 </section>
