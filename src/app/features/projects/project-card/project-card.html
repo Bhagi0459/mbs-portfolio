@@ -46,7 +46,7 @@
         <dd>
           <ul class="project-card__tags" role="list">
             @for (tech of project().technologies; track tech) {
-              <li class="project-card__tag">{{ tech }}</li>
+              <li class="project-card__tag"><app-tech-chip [name]="tech" /></li>
             }
           </ul>
         </dd>
