@@ -14,9 +14,17 @@ export const CERTIFICATIONS: Certification[] = [
 
 export const CONTINUOUS_LEARNING: Certification[] = [
   {
+    id: 'what-is-scrum',
+    title: 'What Is Scrum?',
+    issuer: 'LinkedIn Learning',
+    category: 'Continuous Learning',
+    issueDate: 'Jul 2026',
+    topics: ['Scrum', 'Agile Methodologies'],
+  },
+  {
     id: 'agile-foundations',
     title: 'Agile Foundations',
-    issuer: 'LinkedIn',
+    issuer: 'LinkedIn Learning',
     category: 'Continuous Learning',
     issueDate: 'Jul 2026',
     topics: ['Agile Methodologies', 'Agile Project Management'],
@@ -24,7 +32,7 @@ export const CONTINUOUS_LEARNING: Certification[] = [
   {
     id: 'ethics-generative-ai',
     title: 'Ethics in the Age of Generative AI',
-    issuer: 'LinkedIn',
+    issuer: 'LinkedIn Learning',
     category: 'Continuous Learning',
     issueDate: 'Jun 2026',
     topics: ['Computer Ethics', 'Generative AI'],
@@ -32,7 +40,7 @@ export const CONTINUOUS_LEARNING: Certification[] = [
   {
     id: 'microsoft-365-copilot',
     title: 'Learning Microsoft 365 Copilot for Work',
-    issuer: 'LinkedIn',
+    issuer: 'LinkedIn Learning',
     category: 'Continuous Learning',
     issueDate: 'Jun 2026',
     topics: ['AI for Business', 'AI Productivity'],
@@ -40,7 +48,7 @@ export const CONTINUOUS_LEARNING: Certification[] = [
   {
     id: 'sql-practice-basic-queries',
     title: 'SQL Practice: Basic Queries',
-    issuer: 'LinkedIn',
+    issuer: 'LinkedIn Learning',
     category: 'Continuous Learning',
     issueDate: 'Jun 2026',
     topics: ['SQL'],
@@ -68,6 +76,14 @@ export const CONTINUOUS_LEARNING: Certification[] = [
     category: 'Continuous Learning',
     issueDate: 'Aug 2025',
     topics: ['Generative AI', 'Artificial Intelligence'],
+  },
+  {
+    id: 'sql-projects-for-beginners',
+    title: 'SQL Projects for Beginners',
+    issuer: 'Great Learning',
+    category: 'Continuous Learning',
+    issueDate: '2023',
+    topics: ['SQL'],
   },
   {
     id: 'power-bi-business-intelligence',

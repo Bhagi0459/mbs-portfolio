@@ -31,7 +31,7 @@ export class About {
     this.seo.updateMetadata({
       title: 'About — Bhagya Sankar Maddela',
       description:
-        "Senior Angular Developer with 5+ years across financial services, business administration, and healthcare — from a Raymond James stock portfolio platform to enterprise EMR and workers' compensation systems.",
+        "Senior Angular Developer with 5+ years across financial services, business administration, and healthcare — from a stock portfolio platform to enterprise EMR and workers' compensation systems.",
     });
 
     afterNextRender(() => this.observeReveals());
