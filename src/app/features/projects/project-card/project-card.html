@@ -21,6 +21,9 @@
     </div>
 
     <h3 class="project-card__title">{{ project().title }}</h3>
+    @if (project().company) {
+      <p class="project-card__client">Company: {{ project().company }}</p>
+    }
     @if (project().client) {
       <p class="project-card__client">Client: {{ project().client }}</p>
     }
@@ -49,16 +52,18 @@
         </dd>
       </div>
 
-      <div class="project-card__row">
-        <dt>Key Learnings</dt>
-        <dd>
-          <ul class="project-card__list" role="list">
-            @for (item of project().keyLearnings; track item) {
-              <li>{{ item }}</li>
-            }
-          </ul>
-        </dd>
-      </div>
+      @if (project().keyLearnings; as keyLearnings) {
+        <div class="project-card__row">
+          <dt>Key Learnings</dt>
+          <dd>
+            <ul class="project-card__list" role="list">
+              @for (item of keyLearnings; track item) {
+                <li>{{ item }}</li>
+              }
+            </ul>
+          </dd>
+        </div>
+      }
     </dl>
 
     @if (project().repoUrl || project().liveUrl) {

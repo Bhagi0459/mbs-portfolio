@@ -29,12 +29,12 @@ export const JOURNEY: JourneyMilestone[] = [
   },
   {
     id: 'sorano',
-    role: 'Software Engineer',
+    role: 'Software Programmer',
     company: 'Sorano Technologies Pvt. Ltd.',
     period: 'May 2021 — July 2024',
-    domain: 'Financial Services & Business Administration',
+    domain: 'Healthcare Administration, Business Administration, Financial Services & Internal Tooling',
     description:
-      'Developed Prism, a stock portfolio management platform for client Raymond James, alongside business administration applications. Focused on enterprise Angular architecture, REST API integration, and delivering production enhancements, bug fixes, and performance improvements across large-scale applications.',
+      'Built Angular modules for healthcare administration platforms (Gold Coast Health Plan, CA Life Line), migrated a legacy .NET UI to Angular for Custom Point, and migrated PRISM — a legacy VB-based stock and portfolio information system — to Angular for a financial-services client. Also built Sorano\'s internal skill-assessment platform, Online Exam Portal, using React and Next.js.',
   },
 ];
 
@@ -87,7 +87,7 @@ export const INDUSTRIES: Industry[] = [
   {
     name: 'Financial Services',
     description:
-      'Built Prism, a stock portfolio management platform for Raymond James — engineering interfaces for real-time financial data and portfolio operations.',
+      'Built PRISM, a stock portfolio management platform for a financial-services client — engineering interfaces for real-time financial data and portfolio operations.',
   },
   {
     name: 'Business Administration',

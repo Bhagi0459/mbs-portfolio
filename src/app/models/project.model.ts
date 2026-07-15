@@ -8,7 +8,10 @@ export interface Project {
   problemSolved: string;
   role: string;
   technologies: string[];
-  keyLearnings: string[];
+  /** Bullet-point takeaways distinct from `role` — omit rather than restate `role` as a list. */
+  keyLearnings?: string[];
+  /** The employer/company that built this — distinct from `client`, which names who it was built for. */
+  company?: string;
   client?: string;
   domain?: string;
   repoUrl?: string;
