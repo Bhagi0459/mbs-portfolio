@@ -9,11 +9,12 @@ import {
 import gsap from 'gsap';
 import { registerGsapPlugins } from '../../core/animation/gsap.config';
 import { SeoService } from '../../core/seo/seo';
+import { TechChip } from '../../shared/tech-chip/tech-chip';
 import { EXPERIENCE } from './experience.data';
 
 @Component({
   selector: 'app-experience',
-  imports: [],
+  imports: [TechChip],
   templateUrl: './experience.html',
   styleUrl: './experience.scss',
 })

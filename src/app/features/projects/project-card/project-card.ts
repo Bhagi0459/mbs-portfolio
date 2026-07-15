@@ -12,12 +12,13 @@ import {
 import { LucideExternalLink } from '@lucide/angular';
 import gsap from 'gsap';
 import { Project } from '../../../models/project.model';
+import { TechChip } from '../../../shared/tech-chip/tech-chip';
 
 const MAX_TILT_DEGREES = 6;
 
 @Component({
   selector: 'app-project-card',
-  imports: [NgOptimizedImage, LucideExternalLink],
+  imports: [NgOptimizedImage, LucideExternalLink, TechChip],
   templateUrl: './project-card.html',
   styleUrl: './project-card.scss',
 })
