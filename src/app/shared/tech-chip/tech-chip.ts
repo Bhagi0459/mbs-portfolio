@@ -14,5 +14,5 @@ import { TECH_ICON_PATHS } from './tech-icon-paths';
 export class TechChip {
   readonly name = input.required<string>();
 
-  protected readonly iconPath = computed(() => TECH_ICON_PATHS[this.name()] ?? null);
+  protected readonly icon = computed(() => TECH_ICON_PATHS[this.name()] ?? null);
 }
