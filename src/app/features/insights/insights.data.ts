@@ -30,6 +30,15 @@ export const INSIGHT_POSTS: InsightPost[] = [
       'https://www.linkedin.com/posts/bhagyasankarmaddela_angular-angularperformance-rxjs-share-7482661017030762496-UZkA/',
   },
   {
+    id: 'pure-pipes-vs-functions',
+    title: 'Why Pure Pipes Are Better Than Calling Functions in Templates',
+    excerpt: 'Reusing a pipe\'s cached result instead of recalculating an expensive function on every change detection cycle.',
+    tags: ['Angular', 'Performance'],
+    series: 'Angular Performance Series #4',
+    sourceUrl:
+      'https://www.linkedin.com/posts/bhagyasankarmaddela_angular-angularperformance-typescript-share-7483740844492066816--cLX/',
+  },
+  {
     id: 'trackby-performance',
     title: 'Why trackBy Can Make Your Angular App Faster',
     excerpt:

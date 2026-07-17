@@ -110,16 +110,18 @@
 }
 
 // Layer 5 — brand mark and typography.
+// Grid-stacked (not flex-column) so the mark and the identity occupy the same
+// centered cell — the name replaces the mark in place once it fades out,
+// instead of appearing lower in leftover flex-column space.
 .intro__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-5);
+  display: grid;
+  place-items: center;
   text-align: center;
   padding-inline: var(--space-6);
 }
 
 .intro__mark-group {
+  grid-area: 1 / 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -271,6 +273,7 @@
 }
 
 .intro__identity {
+  grid-area: 1 / 1;
   display: flex;
   flex-direction: column;
   align-items: center;
