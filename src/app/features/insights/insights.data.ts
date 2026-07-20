@@ -39,6 +39,16 @@ export const INSIGHT_POSTS: InsightPost[] = [
       'https://www.linkedin.com/posts/bhagyasankarmaddela_angular-angularperformance-typescript-share-7483740844492066816--cLX/',
   },
   {
+    id: 'signals-explained',
+    title: 'Why Signals Make Angular Apps Faster',
+    excerpt:
+      'Notifying only the components that depend on an updated Signal, instead of triggering change detection across the whole tree.',
+    tags: ['Angular', 'Performance', 'Signals'],
+    series: 'Angular Performance Series #5',
+    sourceUrl:
+      'https://www.linkedin.com/posts/bhagyasankarmaddela_angular-angularperformance-signals-share-7484832285725478912-J-GK/',
+  },
+  {
     id: 'trackby-performance',
     title: 'Why trackBy Can Make Your Angular App Faster',
     excerpt:
