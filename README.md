@@ -1,59 +1,59 @@
-# MbsPortfolio
+# MBS Portfolio
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.31.
+Personal portfolio site for Bhagya Sankar Maddela, Senior Angular Developer — experience, projects, skills, and technical writing in one place.
 
-## Development server
+**Live site:** [mbsfolio.netlify.app](https://mbsfolio.netlify.app/)
 
-To start a local development server, run:
+Deployed on **Netlify**.
 
-```bash
-ng serve
+## Sections
+
+- **Home** — intro and highlights
+- **About** — background and education
+- **Experience** — work history
+- **Skills** — grouped tech stack
+- **Projects** — featured personal and enterprise work
+- **Insights** — Angular Performance Series and other technical posts, sourced from LinkedIn
+- **Certifications**
+- **Resume**
+- **Contact**
+
+## Tech stack
+
+- Angular 20 — Standalone Components, lazy-loaded feature routes
+- GSAP for animation, Lucide Angular for icons
+- RxJS
+
+## Project structure
+
+```
+src/app/
+  core/        # animation, intro sequence, contact, SEO services
+  layout/      # navbar, footer, intro
+  features/    # home, about, experience, skills, projects, insights, certifications, resume, contact
+  shared/      # ambient background, tech chip, section heading, social icons, not-found
+  models/      # shared TypeScript interfaces
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Each entry in the Insights feature (`src/app/features/insights/insights.data.ts`) links to the original LinkedIn post.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Getting started
 
 ```bash
-ng generate component component-name
+npm install
+npm start        # ng serve, http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Scripts
 
-```bash
-ng generate --help
-```
+| Command | Description |
+| --- | --- |
+| `npm start` | Run the Angular dev server |
+| `npm run build` | Production build to `dist/mbs-portfolio/browser` |
+| `npm run watch` | Incremental dev build |
+| `npm test` | Run unit tests (Karma/Jasmine) |
+| `npm run lint` | Lint the project |
 
-## Building
+## Deployment
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Netlify builds `npm run build` and publishes `dist/mbs-portfolio/browser`, with all routes rewritten to `index.html` for client-side routing (`netlify.toml`).
