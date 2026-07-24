@@ -49,6 +49,16 @@ export const INSIGHT_POSTS: InsightPost[] = [
       'https://www.linkedin.com/posts/bhagyasankarmaddela_angular-angularperformance-signals-share-7484832285725478912-J-GK/',
   },
   {
+    id: 'performance-series-recap',
+    title: '7 Techniques for Faster Angular Apps',
+    excerpt:
+      'Closing out the series — OnPush, lazy loading, the async pipe, pure pipes, Signals, trackBy, and debounceTime + switchMap, tied together with one idea: performance is many small habits, not one big fix.',
+    tags: ['Angular', 'Performance'],
+    series: 'Angular Performance Series #6',
+    sourceUrl:
+      'https://www.linkedin.com/posts/bhagyasankarmaddela_angular-angularperformance-typescript-share-7485917440774868992-fyyU/',
+  },
+  {
     id: 'trackby-performance',
     title: 'Why trackBy Can Make Your Angular App Faster',
     excerpt:
