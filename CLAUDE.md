@@ -4,32 +4,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-`mbs-portfolio` is an Angular 20 personal portfolio site, scaffolded with Angular CLI 20.3.31. The codebase is currently minimal (fresh scaffold): only a navbar/footer layout exists, and the `core`, `features`, `models`, and `shared` directories under `src/app/` are empty placeholders establishing the intended architecture.
+`mbs-portfolio` is an Angular 20 personal portfolio site — a fully static, client-rendered
+SPA with no backend, deployed to Netlify ([mbsfolio.netlify.app](https://mbsfolio.netlify.app/)).
+Nine routed feature pages (home, about, experience, skills, projects, insights,
+certifications, resume, contact), each lazy-loaded and driven by a typed `*.data.ts` file
+holding the actual content. Full architecture, frontend conventions, and deployment
+details live in [`docs/`](docs/README.md) — read that before making structural changes.
 
 ## Commands
 
 ```bash
 npm start           # ng serve — dev server at http://localhost:4200/, auto-reloads on change
-npm run build        # ng build — production build to dist/ (optimized by default)
+npm run build        # ng build — production build to dist/mbs-portfolio/browser
 npm run watch         # ng build --watch --configuration development
 npm test           # ng test — unit tests via Karma/Jasmine (watches by default)
+npm run test:ci      # ng test --watch=false --browsers=ChromeHeadless — CI mode
+npm run lint         # ng lint
 ```
 
 Run a single test file/suite: use Karma's standard filtering, e.g. `ng test --include='**/navbar.spec.ts'`, or narrow with Jasmine `fdescribe`/`fit` in the spec.
 
 Generate a new component (uses the project's scss schematic default): `ng generate component <path/name>`.
 
-There is no configured lint script and no e2e framework set up.
+There is no e2e framework set up.
 
 ## Architecture
 
-- **`src/app/layout/`** — structural shell components (`navbar`, `footer`) rendered once in `app.html` around `<router-outlet>`. `App` (`src/app/app.ts`) is the root standalone component that wires these together.
-- **`src/app/core/`** — intended for singleton services, app-wide providers, guards/interceptors (empty so far).
-- **`src/app/features/`** — intended for routed, page-level feature modules/components (empty so far).
-- **`src/app/shared/`** — intended for reusable, presentational components/directives/pipes used across features (empty so far).
-- **`src/app/models/`** — intended for shared TypeScript interfaces/types (empty so far).
-- **`src/app/app.routes.ts`** — central route table (currently empty `Routes` array); new pages should be registered here.
-- **`src/app/app.config.ts`** — `ApplicationConfig` composition root (zoneless-friendly change detection, router providers, global error listeners). Add new app-wide providers here rather than in `main.ts`.
+- **`src/app/layout/`** — structural shell components (`navbar`, `footer`, boot `intro` overlay) rendered once in `app.html` around `<router-outlet>`. `App` (`src/app/app.ts`) is the root standalone component that wires these together.
+- **`src/app/core/`** — singleton services and app-wide data: `SeoService` (per-route meta tags), `IntroService` (the boot-intro/hero-entrance handoff state machine — see [docs/architecture.md](docs/architecture.md)), GSAP plugin registration, and contact/social-link source data.
+- **`src/app/features/`** — one folder per routed, lazy-loaded page. Each pairs a component with a `*.data.ts` file holding that page's content.
+- **`src/app/shared/`** — reusable presentational components used across features: tech-chip (brand icon + label), section headings, ambient background, social icons, 404 page.
+- **`src/app/models/`** — shared TypeScript interfaces, one per content shape (`Project`, `Experience`, `Skill`, etc.).
+- **`src/app/app.routes.ts`** — central route table; every entry lazy-loads via `loadComponent()`. New pages are registered here.
+- **`src/app/app.config.ts`** — `ApplicationConfig` composition root (zone-based change detection with event coalescing, router providers with view transitions, global error listeners). Add new app-wide providers here rather than in `main.ts`.
 
 Components are standalone (no NgModules) and follow Angular CLI's default generated shape: a `.ts` class, separate `.html` template, and separate `.scss` stylesheet per component (set via the `@schematics/angular:component` `style: scss` default in `angular.json`).
 

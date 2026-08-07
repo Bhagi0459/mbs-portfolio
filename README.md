@@ -57,3 +57,7 @@ npm start        # ng serve, http://localhost:4200
 ## Deployment
 
 Netlify builds `npm run build` and publishes `dist/mbs-portfolio/browser`, with all routes rewritten to `index.html` for client-side routing (`netlify.toml`).
+
+## Docs
+
+Full engineering docs — architecture, frontend conventions, deployment, and a glossary — live in [`docs/`](docs/README.md).
