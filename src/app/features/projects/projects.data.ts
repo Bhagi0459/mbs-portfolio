@@ -69,7 +69,7 @@ export const PROFESSIONAL_PROJECTS: Project[] = [
     description: "Enterprise EMR platform (Caduceus USA) for corporate health & workers' compensation workflows.",
     problemSolved:
       "The EMR platform needed secure, role-based patient and provider data handling across corporate health and workers' compensation workflows for a US-based client.",
-    role: 'Built Angular modules for patient and provider workflows, Power BI dashboards with DAX measures, SQL Server stored procedures, and .NET REST API integrations, with role-based dashboard visibility.',
+    role: 'Built Angular modules for patient and provider workflows, Power BI dashboards with DAX measures, SQL Server stored procedures, and .NET REST APIs, with role-based dashboard visibility.',
     technologies: ['Angular', 'Power BI', 'DAX', 'SQL Server', '.NET REST API'],
   },
   {
@@ -114,7 +114,7 @@ export const PERSONAL_PROJECTS: Project[] = [
     description: 'Full-stack job application tracking platform.',
     problemSolved:
       'Job seekers often track applications, recruiters, and interview stages across scattered spreadsheets and notes, with no single, secure place to see progress at a glance.',
-    role: 'Designed and built a full-stack platform end to end: an Angular 19 frontend using Standalone Components, Signals, computed state, and an RxJS-driven search pipeline, talking to an ASP.NET Core .NET 10 REST API secured with JWT authentication and backed by PostgreSQL via EF Core. Implemented a secure password-reset token architecture, Dockerized the API, and added 39 automated frontend/backend tests. Deployed across Vercel, Render, and Neon.',
+    role: 'Designed and built a full-stack platform end to end: an Angular 19 frontend using Standalone Components, Signals, computed state, and an RxJS-driven search pipeline, talking to an ASP.NET Core .NET 10 REST API secured with JWT authentication and backed by PostgreSQL via EF Core. Implemented a secure password-reset token architecture, Dockerized the API, and added 54 automated frontend/backend tests. Deployed across Vercel, Render, and Neon.',
     technologies: [
       'Angular 19',
       'Standalone Components',

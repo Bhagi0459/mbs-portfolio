@@ -25,7 +25,7 @@ export const JOURNEY: JourneyMilestone[] = [
     period: 'September 2024 — Present',
     domain: 'Healthcare',
     description:
-      "Sole Angular developer across multiple enterprise healthcare modules for a US-based client (Caduceus USA) — including Electronic Medical Records (EMR), Workers' Compensation workflows, and healthcare administration systems. Building dynamic, reusable Angular components and forms, integrating .NET REST APIs and SQL Server stored procedures, and developing Power BI dashboards for operational reporting.",
+      "Sole Angular developer across multiple enterprise healthcare modules for a US-based client (Caduceus USA) — including Electronic Medical Records (EMR), Workers' Compensation workflows, and healthcare administration systems. Building dynamic, reusable Angular components and forms, developing and integrating .NET REST APIs, writing SQL Server stored procedures, and building Power BI dashboards for operational reporting.",
   },
   {
     id: 'sorano',
