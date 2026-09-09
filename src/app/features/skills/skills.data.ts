@@ -49,13 +49,19 @@ export const SKILL_GROUPS: SkillGroup[] = [
   {
     id: 'backend-data-integration',
     eyebrow: 'Beyond the Frontend',
-    title: 'Backend & Data Integration',
-    description: 'Connecting Angular applications to backend services and data.',
+    title: 'Backend & Full-Stack',
+    description:
+      'Integrating Angular apps with .NET services and SQL Server — and building the backend myself when a project calls for it.',
     skills: [
-      { name: 'REST API Integration' },
-      { name: '.NET API Integration' },
+      { name: '.NET REST API Integration' },
       { name: 'SQL Server' },
       { name: 'Stored Procedures' },
+      { name: 'ASP.NET Core', note: 'personal projects' },
+      { name: 'C#', note: 'personal projects' },
+      { name: 'Entity Framework Core', note: 'personal projects' },
+      { name: 'PostgreSQL', note: 'personal projects' },
+      { name: 'JWT Authentication', note: 'personal projects' },
+      { name: 'Docker', note: 'personal projects' },
     ],
   },
   {
@@ -74,13 +80,14 @@ export const SKILL_GROUPS: SkillGroup[] = [
     id: 'engineering-tools',
     eyebrow: 'Day to Day',
     title: 'Engineering Tools & Practices',
-    description: 'Day-to-day tooling, plus concepts I am actively building on.',
+    description: 'Day-to-day tooling and delivery practices.',
     skills: [
       { name: 'Git' },
       { name: 'GitHub' },
       { name: 'ESLint' },
-      { name: 'CI/CD concepts' },
-      { name: 'GitHub Actions knowledge', note: 'exploring, not yet used professionally' },
+      { name: 'CI/CD' },
+      { name: 'GitHub Actions', note: 'build & deploy pipelines on personal projects' },
+      { name: 'Agile / Scrum' },
     ],
   },
 ];

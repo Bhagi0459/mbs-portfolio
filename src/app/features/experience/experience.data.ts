@@ -13,10 +13,10 @@ export const EXPERIENCE: Experience[] = [
       'Healthcare Administration systems',
       'Enterprise UI development for Angular applications',
     ],
-    technologies: ['Angular', 'REST APIs', '.NET', 'SQL Server', 'Power BI'],
+    technologies: ['Angular', '.NET REST APIs', 'SQL Server', 'T-SQL', 'Power BI', 'DAX'],
     contributions: [
-      "Delivered Angular-based enterprise UI across Electronic Medical Records, Workers' Compensation, and Healthcare Administration systems.",
-      'Integrated REST APIs with .NET services and SQL Server, and built Power BI dashboards for operational reporting.',
+      "Sole Angular developer delivering enterprise UI across Electronic Medical Records, Workers' Compensation, and Healthcare Administration systems for a US-based client (Caduceus USA).",
+      'Integrated Angular applications with .NET REST APIs, wrote SQL Server queries and stored procedures, and built Power BI dashboards with DAX for operational reporting — with direct client-facing accountability for production issues.',
     ],
   },
   {

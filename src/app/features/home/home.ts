@@ -41,7 +41,7 @@ export class Home {
     this.seo.updateMetadata({
       title: 'Bhagya Sankar Maddela — Senior Angular Developer',
       description:
-        '5+ years building enterprise Angular applications across financial services, business administration, and healthcare — including a stock portfolio management platform and current EMR and workers\' compensation systems.',
+        '5+ years building enterprise web applications — Angular and TypeScript on the frontend, .NET REST APIs and SQL Server behind them — across financial services, business administration, and healthcare, plus full-stack projects on ASP.NET Core and PostgreSQL.',
     });
 
     afterNextRender(() => {

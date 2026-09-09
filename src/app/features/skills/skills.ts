@@ -45,7 +45,7 @@ export class Skills {
     this.seo.updateMetadata({
       title: 'Skills — Bhagya Sankar Maddela',
       description:
-        'Technical capabilities across frontend engineering, Angular architecture, UI tooling, backend integration, analytics, and engineering practice.',
+        'Technical capabilities across Angular architecture, UI tooling, backend and full-stack development (.NET, ASP.NET Core, SQL Server, PostgreSQL), analytics, and engineering practice.',
     });
 
     afterNextRender(() => this.observeReveals());

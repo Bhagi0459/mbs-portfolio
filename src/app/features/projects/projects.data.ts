@@ -66,11 +66,11 @@ export const PROFESSIONAL_PROJECTS: Project[] = [
     category: 'Professional',
     company: 'CommerzTech',
     domain: "Healthcare / EMR / Corporate Health / Workers' Compensation",
-    description: "Enterprise EMR platform for corporate & workers' compensation workflows.",
+    description: "Enterprise EMR platform (Caduceus USA) for corporate health & workers' compensation workflows.",
     problemSolved:
-      "The EMR platform needed secure, role-based patient and provider data handling across corporate health and workers' compensation workflows.",
-    role: 'Built Angular modules for patient and provider workflows, Power BI dashboards with DAX measures, SQL stored procedures, and .NET API integrations, with role-based dashboard visibility.',
-    technologies: ['Angular', 'Power BI', 'DAX', 'SQL Server', '.NET API'],
+      "The EMR platform needed secure, role-based patient and provider data handling across corporate health and workers' compensation workflows for a US-based client.",
+    role: 'Built Angular modules for patient and provider workflows, Power BI dashboards with DAX measures, SQL Server stored procedures, and .NET REST API integrations, with role-based dashboard visibility.',
+    technologies: ['Angular', 'Power BI', 'DAX', 'SQL Server', '.NET REST API'],
   },
   {
     id: 'acme-health',

@@ -31,7 +31,7 @@ export class Projects {
     this.seo.updateMetadata({
       title: 'Projects — Bhagya Sankar Maddela',
       description:
-        'Enterprise and personal Angular projects spanning financial services, healthcare, and business administration.',
+        'Enterprise Angular projects spanning financial services, healthcare, and business administration, plus personal full-stack builds on ASP.NET Core and PostgreSQL.',
     });
 
     afterNextRender(() => this.playReveal());

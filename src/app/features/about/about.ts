@@ -31,7 +31,7 @@ export class About {
     this.seo.updateMetadata({
       title: 'About — Bhagya Sankar Maddela',
       description:
-        "Senior Angular Developer with 5+ years across financial services, business administration, and healthcare — from a stock portfolio platform to enterprise EMR and workers' compensation systems.",
+        "Senior Angular Developer with 5+ years across financial services, business administration, and healthcare — Angular frontends over .NET REST APIs and SQL Server, from a stock portfolio platform to enterprise EMR and workers' compensation systems, plus full-stack projects on ASP.NET Core and PostgreSQL.",
     });
 
     afterNextRender(() => this.observeReveals());

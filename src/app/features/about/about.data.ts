@@ -25,7 +25,7 @@ export const JOURNEY: JourneyMilestone[] = [
     period: 'September 2024 — Present',
     domain: 'Healthcare',
     description:
-      "Sole Angular developer across multiple enterprise healthcare modules — including Electronic Medical Records (EMR), Workers' Compensation workflows, and healthcare administration systems. Building dynamic, reusable Angular components and forms, integrating REST APIs with backend services and SQL Server, and developing Power BI dashboards for operational reporting.",
+      "Sole Angular developer across multiple enterprise healthcare modules for a US-based client (Caduceus USA) — including Electronic Medical Records (EMR), Workers' Compensation workflows, and healthcare administration systems. Building dynamic, reusable Angular components and forms, integrating .NET REST APIs and SQL Server stored procedures, and developing Power BI dashboards for operational reporting.",
   },
   {
     id: 'sorano',
@@ -52,11 +52,16 @@ export const SPECIALIZATIONS: Specialization[] = [
   {
     title: 'REST API & Backend Integration',
     description:
-      'Integrating Angular applications with REST APIs and enterprise backend services end to end.',
+      'Integrating Angular applications with .NET REST APIs, SQL Server, and enterprise backend services end to end.',
+  },
+  {
+    title: 'Full-Stack Delivery',
+    description:
+      'Shipping applications end to end when a project calls for it — ASP.NET Core APIs, EF Core, PostgreSQL, JWT auth, and Docker — as I did solo on CareerPilot.',
   },
   {
     title: 'Operational Reporting & Dashboards',
-    description: 'Developing Power BI dashboards for operational KPIs and business reporting.',
+    description: 'Developing Power BI dashboards with DAX for operational KPIs and business reporting.',
   },
   {
     title: 'Cross-Domain Enterprise Delivery',
@@ -76,9 +81,13 @@ export const CORE_TECHNOLOGIES: string[] = [
   'PrimeNG',
   'SCSS',
   'REST APIs',
-  '.NET',
+  'ASP.NET Core',
+  'C#',
+  'Entity Framework Core',
   'SQL Server',
+  'PostgreSQL',
   'Power BI',
+  'Docker',
   'Git',
   'GitHub',
 ];

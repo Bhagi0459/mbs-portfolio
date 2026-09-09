@@ -28,7 +28,7 @@ export class Resume {
     this.seo.updateMetadata({
       title: 'Resume — Bhagya Sankar Maddela',
       description:
-        '5+ years of enterprise application experience in Angular and frontend engineering, across financial services, business administration, and healthcare.',
+        '5+ years of enterprise application experience in Angular and full-stack development (.NET, SQL Server, ASP.NET Core), across financial services, business administration, and healthcare.',
     });
 
     afterNextRender(() => this.observeReveals());

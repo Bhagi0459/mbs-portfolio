@@ -30,7 +30,7 @@ export class Experience {
     this.seo.updateMetadata({
       title: 'Experience — Bhagya Sankar Maddela',
       description:
-        'Professional experience spanning healthcare, financial services, and business administration — Angular development at CommerzTech India and Sorano Technologies.',
+        'Professional experience spanning healthcare, financial services, and business administration — Angular development with .NET REST API and SQL Server integration at CommerzTech India and Sorano Technologies.',
     });
 
     afterNextRender(() => {
